@@ -1,13 +1,22 @@
 (defsystem "cloveleaf"
   :version "0.0.1"
-  :author ""
-  :license ""
-  :depends-on ()
+  :author "Elliott Johnson <elliott@elliottjohnson.net>"
+  :license "MIT"
+  :depends-on ("com.inuoe.jzon")
   :components ((:module "src"
                 :components
                 ((:file "main"))))
-  :description ""
+  :description "A library to present SMuFL fonts written in Common Lisp."
   :in-order-to ((test-op (test-op "cloveleaf/tests"))))
+
+(defsystem "cloveleaf/ttf"
+  :version "0.0.1"
+  :author "Elliott Johnson <elliott@elliottjohnson.net>"
+  :license "MIT"
+  :depends-on ("cloveleaf" "zpb-ttf")
+  :components ((:module "backends"
+			:components ((:file "ttf"))))
+  :description "A TTF backend to cloveleaf.")
 
 (defsystem "cloveleaf/tests"
   :author ""
