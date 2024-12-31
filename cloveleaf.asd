@@ -28,3 +28,12 @@
                 ((:file "main"))))
   :description "Test system for cloveleaf"
   :perform (test-op (op c) (symbol-call :rove :run c)))
+
+(defsystem "cloveleaf/smufl"
+  :author "Elliott Johnson"
+  :license "MIT"
+  :depends-on ("com.inuoe.jzon")
+  :components ((:module "build"
+		:components ((:file "generate"))))
+  :description
+  "A library to generate our distributed files based upon SMuFL releases.")
