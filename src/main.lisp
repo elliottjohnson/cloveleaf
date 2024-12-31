@@ -1,5 +1,43 @@
 (uiop:define-package cloveleaf
-  (:use #:cl #:com.inuoe.jzon))
+  (:use #:cl #:com.inuoe.jzon)
+  (:export #:*smufl-specification-version*
+	   #:font
+	   #:font-name
+	   #:font-version
+	   #:font-pathname
+	   #:font-glyph-hash
+	   #:font-engraving-defaults
+	   #:font-design-size
+	   #:font-size-range
+	   #:font-classes
+	   #:font-ranges
+	   #:font-sets
+	   #:text-font
+	   #:metadata-font
+	   #:font-metadata
+	   #:glyph
+	   #:glyph-name
+	   #:glyph-code-point
+	   #:glyph-code
+	   #:glyph-character
+	   #:glyph-description
+	   #:glyph-alternates
+	   #:glyph-alternate-for
+	   #:glyph-advanced-width
+	   #:glyph-anchors
+	   #:glyph-bounding-boxes
+	   #:ligature-glyph
+	   #:glyph-ligature-component-glyphs
+	   #:glyphp
+	   #:classes
+	   #:classes-name
+	   #:classes-glyphs
+	   #:ranges
+	   #:ranges-name
+	   #:ranges-description
+	   #:ranges-end
+	   #:ranges-start
+	   #:ranges-glyphs))
 (in-package #:cloveleaf)
 
 (defvar *smufl-specification-version* "1.40"
@@ -86,8 +124,7 @@
 		:documentation "A string descriptions of the character."
 		:initarg :description
 		:type string)
-   
-   (alternates :accessor glyph-altenates
+   (alternates :accessor glyph-alternates
 	       :documentation "A list of alternates for this character."
 	       :initarg :alternates
 	       :initform ()
@@ -105,13 +142,63 @@
 	    :documentation "A list of up to 22 attributes wand values forthe given glyph."
 	    :initarg :glyph-anchors
 	    :type list)
-   (bounding-boxes :accessor glyph-bounding-box
+   (bounding-boxes :accessor glyph-bounding-boxes
 		   :documentation "Defines the bounding box of the glyph or smallest rectaingle test encloses very part of the path."
 		   :initarg :bounding-boxes))
     (:documentation "A class to represent the SMuFL spec's defined glyphs."))
 
 (defclass ligature-glyph (glyph)
-  ((component-glyphs :accessor glyph-ligature-glyph-componts-flyths
+  ((component-glyphs :accessor glyph-ligature-component-glyths
 		     :documentation "A list of glyphs that make up a ligature for this graph."
 		     :initarg :ligature))
   (:documentation "A class for all ligature classes"))
+
+(defun glyphp (thing &optional environment)
+  "Returns true if THING is a glyph."
+  (typep thing 'glyph environment))
+
+;;;
+;;; classes
+;;;
+
+(defclass classes ()
+  ((name :accessor classes-name
+	 :documentation "The name of a class of SMuFL glyphs."
+	 :type string
+	 :initarg :name)
+   (glyphs :accessor classes-glyphs
+	   :documentation "A list of glyphs that belong to this class."
+	   :type list
+	   :initarg :glyphs
+	   :initform ()))
+  (:documentation "SMuFL classes are groups of glyphs."))
+
+
+;;;
+;;; Ranges
+;;;
+
+(defclass ranges ()
+  ((name :accessor ranges-name
+	 :documentation "A pretty name for a SMuFL range."
+	 :type string
+	 :initarg :name)
+   (description :accessor ranges-description
+		:documentation "A description of the range."
+		:type string
+		:initarg :description)
+   (glyphs :accessor ranges-glyphs
+	   :documentation "A list of glyph objects."
+	   :type list
+	   :initarg :glyphs
+	   :initform ())
+   (end :accessor ranges-end
+	:documentation "The last glyph in the unicode range."
+	:type number
+	:initarg :end)
+   (start :accessor ranges-start
+	  :documentation "The first glyph in the unicode range."
+	  :type number
+	  :initarg :start))
+  (:documentation
+   "SMuFL ranges define unicode blocks of glyphs with a START and END."))

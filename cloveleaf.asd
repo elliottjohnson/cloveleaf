@@ -32,7 +32,7 @@
 (defsystem "cloveleaf/smufl"
   :author "Elliott Johnson"
   :license "MIT"
-  :depends-on ("com.inuoe.jzon")
+  :depends-on ("com.inuoe.jzon" "cloveleaf")
   :components ((:module "build"
 		:components ((:file "generate"))))
   :description
