@@ -6,18 +6,9 @@
   nil
   "A default pathname to use for the SMuFL metadata.")
 
-(defvar *cloveleaf-source-directory-pathname*
-  (car (directory (asdf:system-relative-pathname (asdf:find-system :cloveleaf)
-						 "src")))
-  "A directory pathname to install the generated filenames into.")
-
-
 (defparameter +smufl-metadata-glyphnames-filename+
   "glyphnames.json"
   "The filename of the SMuFL glyphnames.json file to read in.")
-(defparameter +cloveleaf-glyphnames-filename+
-  "glyphnames.lisp"
-  "The filename for the cloveleaf glyphname definitions.")
 (defparameter +smufl-metadata-classes-filename+
   "classes.json"
   "The filename of the SMuFL classes.json file to read in.")

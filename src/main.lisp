@@ -29,6 +29,9 @@
 	   #:ligature-glyph
 	   #:glyph-ligature-component-glyphs
 	   #:glyphp
+	   #:+cloveleaf-glyphnames-filename+
+	   #:*cloveleaf-source-directory-pathname*
+	   #:code-codepoint
 	   #:classes
 	   #:classes-name
 	   #:classes-glyphs
@@ -38,13 +41,14 @@
 	   #:ranges-end
 	   #:ranges-start
 	   #:ranges-glyphs))
+
 (in-package #:cloveleaf)
 
 (defvar *smufl-specification-version* "1.40"
   "A version string to identify the SMuFL specification version this library is compatible with.")
 
 ;;;
-;;; Font clases
+;;; Font classes
 ;;;
 
 (defclass font ()
@@ -156,6 +160,63 @@
 (defun glyphp (thing &optional environment)
   "Returns true if THING is a glyph."
   (typep thing 'glyph environment))
+
+;;;
+;;; Code to read in SMuFL defined glyphnames.
+;;;
+
+(defparameter +cloveleaf-glyphnames-filename+
+  "glyphnames.lisp"
+  "The filename for the cloveleaf glyphname definitions.")
+(defvar *cloveleaf-source-directory-pathname*
+  (car (directory
+	(asdf:system-relative-pathname (asdf:find-system :cloveleaf) "src")))
+  "A directory pathname to install the generated filenames into.")
+
+(defun read-glyphnames (&key
+			  (filename (merge-pathnames
+				     +cloveleaf-glyphnames-filename+
+				     *cloveleaf-source-directory-pathname*))
+			  (hash (make-hash-table :test 'eq)))
+  "Returns a populated HASH of glyphs based upon the SMuFL defined 
+glyph names in FILENAME."
+  (with-open-file (file filename)
+    (loop for glyph-def = (read file nil nil)
+	  while glyph-def
+	  do (let* ((code (getf glyph-def :code))
+		    (character (code-char code)))
+	       (setf (gethash character hash)
+		     (make-instance 'glyph
+				    :name (getf glyph-def :name)
+				    :character character
+				    :code code
+				    :description (getf glyph-def :description)
+				    :alternates (getf glyph-def :alternates)
+				    :code-point (code-codepoint code))))))
+  hash)
+
+(defun map-alternates (hash)
+  "Loops over the elements in hash and maps alternates codes to a list of
+characters.  It would be nice to map to alternate glyphs, but some of the
+alternates are not SMuFL characters."
+  (assert (hash-table-p hash))
+  (loop for glyph being the hash-value in hash
+	do (with-accessors ((alts glyph-alternates))
+	       glyph
+	     (when alts
+	       (setf alts
+		     (mapcar #'(lambda (x)
+				 (cond ((characterp x) x)
+				       ((integerp x) (code-char x))
+				       (t (error "Unknown alternate glyph: ~A"
+						 x))))
+			     alts))))))
+
+(defun code-codepoint (code)
+  "Converts a character code to a SMuFL code-point string."
+  (assert (integerp code))
+  (format nil "U+~4,'0X" code))
+
 
 ;;;
 ;;; classes
