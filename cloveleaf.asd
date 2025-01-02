@@ -5,7 +5,14 @@
   :depends-on ("com.inuoe.jzon")
   :components ((:module "src"
                 :components
-                ((:file "main"))))
+                ((:file "package")
+		 (:file "definitions")
+		 (:file "utilities")
+		 (:file "font")
+		 (:file "glyph")
+		 (:file "class")
+		 (:file "range")
+		 (:file "main"))))
   :description "A library to present SMuFL fonts written in Common Lisp."
   :in-order-to ((test-op (test-op "cloveleaf/tests"))))
 
