@@ -300,4 +300,5 @@ ranges in FILENAME."
 				    :end (getf ranges-def :end)
 				    :glyphs (mapcar #'(lambda (g)
 							(gethash g glyph-table))
-						    (getf ranges-def :glyphs))))))))
+						    (getf ranges-def :glyphs)))))))
+  hash)
