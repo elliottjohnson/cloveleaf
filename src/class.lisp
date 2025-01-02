@@ -19,22 +19,20 @@
 (defun read-classes (&key (filename (merge-pathnames
 				     +cloveleaf-classes-filename+
 				     *cloveleaf-source-directory-pathname*))
-		       glyph-hash
+		       glyph-table
 		       (hash (make-hash-table :test 'equal)))
   "Returns a populated HASH of classes hashed on CLASSES-NAME."
-  (assert (hash-table-p glyph-hash))
+  (assert (hash-table-p glyph-table))
   (assert (hash-table-p hash))
   (with-open-file (file filename)
     (loop for classes-def = (read file nil nil)
 	  while classes-def
-	  do (progn
-	       (format t "~%~S" classes-def)
-	       (let ((name (getf classes-def :name))
+	  do (let ((name (getf classes-def :name))
 		   (glyphs (getf classes-def :glyphs)))
 	       (setf (gethash name hash)
 		     (make-instance 'classes
 				    :glyphs (mapcar #'(lambda (g)
-							(gethash g glyph-hash))
+							(gethash g glyph-table))
 						    glyphs)
-				    :name name))))))
+				    :name name)))))
   hash)
