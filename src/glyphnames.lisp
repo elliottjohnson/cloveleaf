@@ -712,7 +712,7 @@
 (:NAME "accidentalCommaSlashUp" :CODE 58489 :DESCRIPTION
  "Syntonic/Didymus comma (80:81) up (Bosanquet)" :ALTERNATES NIL)
 (:NAME "accidentalDoubleFlat" :CODE 57956 :DESCRIPTION "Double flat"
- :ALTERNATES (119083))
+ :ALTERNATES (#\MUSICAL_SYMBOL_DOUBLE_FLAT))
 (:NAME "accidentalDoubleFlatArabic" :CODE 60720 :DESCRIPTION
  "Arabic double flat" :ALTERNATES NIL)
 (:NAME "accidentalDoubleFlatEqualTempered" :CODE 58096 :DESCRIPTION
@@ -734,7 +734,7 @@
 (:NAME "accidentalDoubleFlatTwoArrowsUp" :CODE 58063 :DESCRIPTION
  "Double flat raised by two syntonic commas" :ALTERNATES NIL)
 (:NAME "accidentalDoubleSharp" :CODE 57955 :DESCRIPTION "Double sharp"
- :ALTERNATES (119082))
+ :ALTERNATES (#\MUSICAL_SYMBOL_DOUBLE_SHARP))
 (:NAME "accidentalDoubleSharpArabic" :CODE 60728 :DESCRIPTION
  "Arabic double sharp" :ALTERNATES NIL)
 (:NAME "accidentalDoubleSharpEqualTempered" :CODE 58100 :DESCRIPTION
@@ -771,7 +771,8 @@
  "Five-quarter-tones flat" :ALTERNATES NIL)
 (:NAME "accidentalFiveQuarterTonesSharpArrowUp" :CODE 57974 :DESCRIPTION
  "Five-quarter-tones sharp" :ALTERNATES NIL)
-(:NAME "accidentalFlat" :CODE 57952 :DESCRIPTION "Flat" :ALTERNATES (9837))
+(:NAME "accidentalFlat" :CODE 57952 :DESCRIPTION "Flat" :ALTERNATES
+ (#\MUSIC_FLAT_SIGN))
 (:NAME "accidentalFlatArabic" :CODE 60722 :DESCRIPTION "Arabic half-tone flat"
  :ALTERNATES NIL)
 (:NAME "accidentalFlatEqualTempered" :CODE 58097 :DESCRIPTION
@@ -857,7 +858,7 @@
 (:NAME "accidentalNarrowReversedFlatAndFlat" :CODE 57989 :DESCRIPTION
  "Narrow reversed flat and flat(three-quarter-tones flat)" :ALTERNATES NIL)
 (:NAME "accidentalNatural" :CODE 57953 :DESCRIPTION "Natural" :ALTERNATES
- (9838))
+ (#\MUSIC_NATURAL_SIGN))
 (:NAME "accidentalNaturalArabic" :CODE 60724 :DESCRIPTION "Arabic natural"
  :ALTERNATES NIL)
 (:NAME "accidentalNaturalEqualTempered" :CODE 58098 :DESCRIPTION
@@ -909,15 +910,15 @@
 (:NAME "accidentalQuarterSharpEqualTempered" :CODE 58102 :DESCRIPTION
  "Raise by one equal tempered quarter tone" :ALTERNATES NIL)
 (:NAME "accidentalQuarterToneFlat4" :CODE 58495 :DESCRIPTION
- "Quarter-tone flat" :ALTERNATES (119091))
+ "Quarter-tone flat" :ALTERNATES (#\MUSICAL_SYMBOL_QUARTER_TONE_FLAT))
 (:NAME "accidentalQuarterToneFlatArabic" :CODE 60723 :DESCRIPTION
  "Arabic quarter-tone flat" :ALTERNATES NIL)
 (:NAME "accidentalQuarterToneFlatArrowUp" :CODE 57968 :DESCRIPTION
- "Quarter-tone flat" :ALTERNATES (119084))
+ "Quarter-tone flat" :ALTERNATES (#\MUSICAL_SYMBOL_FLAT_UP))
 (:NAME "accidentalQuarterToneFlatFilledReversed" :CODE 58496 :DESCRIPTION
  "Filled reversed flat (quarter-tone flat)" :ALTERNATES NIL)
 (:NAME "accidentalQuarterToneFlatNaturalArrowDown" :CODE 57971 :DESCRIPTION
- "Quarter-tone flat" :ALTERNATES (119087))
+ "Quarter-tone flat" :ALTERNATES (#\MUSICAL_SYMBOL_NATURAL_DOWN))
 (:NAME "accidentalQuarterToneFlatPenderecki" :CODE 58488 :DESCRIPTION
  "Quarter tone flat (Penderecki)" :ALTERNATES NIL)
 (:NAME "accidentalQuarterToneFlatStein" :CODE 57984 :DESCRIPTION
@@ -925,15 +926,15 @@
 (:NAME "accidentalQuarterToneFlatVanBlankenburg" :CODE 58504 :DESCRIPTION
  "Quarter-tone flat (van Blankenburg)" :ALTERNATES NIL)
 (:NAME "accidentalQuarterToneSharp4" :CODE 58494 :DESCRIPTION
- "Quarter-tone sharp" :ALTERNATES (119090))
+ "Quarter-tone sharp" :ALTERNATES (#\MUSICAL_SYMBOL_QUARTER_TONE_SHARP))
 (:NAME "accidentalQuarterToneSharpArabic" :CODE 60725 :DESCRIPTION
  "Arabic quarter-tone sharp" :ALTERNATES NIL)
 (:NAME "accidentalQuarterToneSharpArrowDown" :CODE 57973 :DESCRIPTION
- "Quarter-tone sharp" :ALTERNATES (119089))
+ "Quarter-tone sharp" :ALTERNATES (#\MUSICAL_SYMBOL_SHARP_DOWN))
 (:NAME "accidentalQuarterToneSharpBusotti" :CODE 58482 :DESCRIPTION
  "Quarter tone sharp (Bussotti)" :ALTERNATES NIL)
 (:NAME "accidentalQuarterToneSharpNaturalArrowUp" :CODE 57970 :DESCRIPTION
- "Quarter-tone sharp" :ALTERNATES (119086))
+ "Quarter-tone sharp" :ALTERNATES (#\MUSICAL_SYMBOL_NATURAL_UP))
 (:NAME "accidentalQuarterToneSharpStein" :CODE 57986 :DESCRIPTION
  "Half sharp (quarter-tone sharp) (Stein)" :ALTERNATES NIL)
 (:NAME "accidentalQuarterToneSharpWiggle" :CODE 58485 :DESCRIPTION
@@ -956,7 +957,8 @@
  "Reversed flat with arrow down" :ALTERNATES NIL)
 (:NAME "accidentalReversedFlatArrowUp" :CODE 58000 :DESCRIPTION
  "Reversed flat with arrow up" :ALTERNATES NIL)
-(:NAME "accidentalSharp" :CODE 57954 :DESCRIPTION "Sharp" :ALTERNATES (9839))
+(:NAME "accidentalSharp" :CODE 57954 :DESCRIPTION "Sharp" :ALTERNATES
+ (#\MUSIC_SHARP_SIGN))
 (:NAME "accidentalSharpArabic" :CODE 60726 :DESCRIPTION
  "Arabic half-tone sharp" :ALTERNATES NIL)
 (:NAME "accidentalSharpEqualTempered" :CODE 58099 :DESCRIPTION
@@ -1008,7 +1010,7 @@
 (:NAME "accidentalThreeQuarterTonesFlatArabic" :CODE 60721 :DESCRIPTION
  "Arabic three-quarter-tones flat" :ALTERNATES NIL)
 (:NAME "accidentalThreeQuarterTonesFlatArrowDown" :CODE 57969 :DESCRIPTION
- "Three-quarter-tones flat" :ALTERNATES (119085))
+ "Three-quarter-tones flat" :ALTERNATES (#\MUSICAL_SYMBOL_FLAT_DOWN))
 (:NAME "accidentalThreeQuarterTonesFlatArrowUp" :CODE 57976 :DESCRIPTION
  "Three-quarter-tones flat" :ALTERNATES NIL)
 (:NAME "accidentalThreeQuarterTonesFlatCouper" :CODE 58505 :DESCRIPTION
@@ -1025,7 +1027,7 @@
 (:NAME "accidentalThreeQuarterTonesSharpArrowDown" :CODE 57975 :DESCRIPTION
  "Three-quarter-tones sharp" :ALTERNATES NIL)
 (:NAME "accidentalThreeQuarterTonesSharpArrowUp" :CODE 57972 :DESCRIPTION
- "Three-quarter-tones sharp" :ALTERNATES (119088))
+ "Three-quarter-tones sharp" :ALTERNATES (#\MUSICAL_SYMBOL_SHARP_UP))
 (:NAME "accidentalThreeQuarterTonesSharpBusotti" :CODE 58484 :DESCRIPTION
  "Three quarter tones sharp (Bussotti)" :ALTERNATES NIL)
 (:NAME "accidentalThreeQuarterTonesSharpStein" :CODE 57987 :DESCRIPTION
@@ -1103,15 +1105,15 @@
 (:NAME "analyticsChoralmelodie" :CODE 59498 :DESCRIPTION "Choralmelodie (Berg)"
  :ALTERNATES NIL)
 (:NAME "analyticsEndStimme" :CODE 59491 :DESCRIPTION "End of stimme"
- :ALTERNATES (119208))
+ :ALTERNATES (#\MUSICAL_SYMBOL_END_OF_STIMME))
 (:NAME "analyticsHauptrhythmus" :CODE 59499 :DESCRIPTION "Hauptrhythmus (Berg)"
  :ALTERNATES NIL)
 (:NAME "analyticsHauptstimme" :CODE 59488 :DESCRIPTION "Hauptstimme"
- :ALTERNATES (119206))
+ :ALTERNATES (#\MUSICAL_SYMBOL_HAUPTSTIMME))
 (:NAME "analyticsInversion1" :CODE 59497 :DESCRIPTION "Inversion 1" :ALTERNATES
  NIL)
 (:NAME "analyticsNebenstimme" :CODE 59489 :DESCRIPTION "Nebenstimme"
- :ALTERNATES (119207))
+ :ALTERNATES (#\MUSICAL_SYMBOL_NEBENSTIMME))
 (:NAME "analyticsStartStimme" :CODE 59490 :DESCRIPTION "Start of stimme"
  :ALTERNATES NIL)
 (:NAME "analyticsTheme" :CODE 59492 :DESCRIPTION "Theme" :ALTERNATES NIL)
@@ -1124,9 +1126,9 @@
  "Retrograde inversion of theme" :ALTERNATES NIL)
 (:NAME "arpeggiato" :CODE 58940 :DESCRIPTION "Arpeggiato" :ALTERNATES NIL)
 (:NAME "arpeggiatoDown" :CODE 58933 :DESCRIPTION "Arpeggiato down" :ALTERNATES
- (119172))
+ (#\MUSICAL_SYMBOL_ARPEGGIATO_DOWN))
 (:NAME "arpeggiatoUp" :CODE 58932 :DESCRIPTION "Arpeggiato up" :ALTERNATES
- (119171))
+ (#\MUSICAL_SYMBOL_ARPEGGIATO_UP))
 (:NAME "arrowBlackDown" :CODE 60260 :DESCRIPTION "Black arrow down (S)"
  :ALTERNATES NIL)
 (:NAME "arrowBlackDownLeft" :CODE 60261 :DESCRIPTION
@@ -1224,11 +1226,12 @@
 (:NAME "arrowheadWhiteUpRight" :CODE 60289 :DESCRIPTION
  "White arrowhead up-right (NE)" :ALTERNATES NIL)
 (:NAME "articAccentAbove" :CODE 58528 :DESCRIPTION "Accent above" :ALTERNATES
- (119163))
+ (#\MUSICAL_SYMBOL_COMBINING_ACCENT))
 (:NAME "articAccentBelow" :CODE 58529 :DESCRIPTION "Accent below" :ALTERNATES
  NIL)
 (:NAME "articAccentStaccatoAbove" :CODE 58544 :DESCRIPTION
- "Accent-staccato above" :ALTERNATES (119169))
+ "Accent-staccato above" :ALTERNATES
+ (#\MUSICAL_SYMBOL_COMBINING_ACCENT-STACCATO))
 (:NAME "articAccentStaccatoBelow" :CODE 58545 :DESCRIPTION
  "Accent-staccato below" :ALTERNATES NIL)
 (:NAME "articLaissezVibrerAbove" :CODE 58554 :DESCRIPTION
@@ -1236,11 +1239,12 @@
 (:NAME "articLaissezVibrerBelow" :CODE 58555 :DESCRIPTION
  "Laissez vibrer (l.v.) below" :ALTERNATES NIL)
 (:NAME "articMarcatoAbove" :CODE 58540 :DESCRIPTION "Marcato above" :ALTERNATES
- (119167))
+ (#\MUSICAL_SYMBOL_COMBINING_MARCATO))
 (:NAME "articMarcatoBelow" :CODE 58541 :DESCRIPTION "Marcato below" :ALTERNATES
  NIL)
 (:NAME "articMarcatoStaccatoAbove" :CODE 58542 :DESCRIPTION
- "Marcato-staccato above" :ALTERNATES (119168))
+ "Marcato-staccato above" :ALTERNATES
+ (#\MUSICAL_SYMBOL_COMBINING_MARCATO-STACCATO))
 (:NAME "articMarcatoStaccatoBelow" :CODE 58543 :DESCRIPTION
  "Marcato-staccato below" :ALTERNATES NIL)
 (:NAME "articMarcatoTenutoAbove" :CODE 58556 :DESCRIPTION
@@ -1264,7 +1268,7 @@
 (:NAME "articSoftAccentTenutoStaccatoBelow" :CODE 60743 :DESCRIPTION
  "Soft accent-tenuto-staccato below" :ALTERNATES NIL)
 (:NAME "articStaccatissimoAbove" :CODE 58534 :DESCRIPTION "Staccatissimo above"
- :ALTERNATES (119166))
+ :ALTERNATES (#\MUSICAL_SYMBOL_COMBINING_STACCATISSIMO))
 (:NAME "articStaccatissimoBelow" :CODE 58535 :DESCRIPTION "Staccatissimo below"
  :ALTERNATES NIL)
 (:NAME "articStaccatissimoStrokeAbove" :CODE 58538 :DESCRIPTION
@@ -1276,7 +1280,7 @@
 (:NAME "articStaccatissimoWedgeBelow" :CODE 58537 :DESCRIPTION
  "Staccatissimo wedge below" :ALTERNATES NIL)
 (:NAME "articStaccatoAbove" :CODE 58530 :DESCRIPTION "Staccato above"
- :ALTERNATES (119164))
+ :ALTERNATES (#\MUSICAL_SYMBOL_COMBINING_STACCATO))
 (:NAME "articStaccatoBelow" :CODE 58531 :DESCRIPTION "Staccato below"
  :ALTERNATES NIL)
 (:NAME "articStressAbove" :CODE 58550 :DESCRIPTION "Stress above" :ALTERNATES
@@ -1284,7 +1288,7 @@
 (:NAME "articStressBelow" :CODE 58551 :DESCRIPTION "Stress below" :ALTERNATES
  NIL)
 (:NAME "articTenutoAbove" :CODE 58532 :DESCRIPTION "Tenuto above" :ALTERNATES
- (119165))
+ (#\MUSICAL_SYMBOL_COMBINING_TENUTO))
 (:NAME "articTenutoAccentAbove" :CODE 58548 :DESCRIPTION "Tenuto-accent above"
  :ALTERNATES NIL)
 (:NAME "articTenutoAccentBelow" :CODE 58549 :DESCRIPTION "Tenuto-accent below"
@@ -1292,7 +1296,7 @@
 (:NAME "articTenutoBelow" :CODE 58533 :DESCRIPTION "Tenuto below" :ALTERNATES
  NIL)
 (:NAME "articTenutoStaccatoAbove" :CODE 58546 :DESCRIPTION
- "Louré (tenuto-staccato) above" :ALTERNATES (119170))
+ "Louré (tenuto-staccato) above" :ALTERNATES (#\MUSICAL_SYMBOL_COMBINING_LOURE))
 (:NAME "articTenutoStaccatoBelow" :CODE 58547 :DESCRIPTION
  "Louré (tenuto-staccato) below" :ALTERNATES NIL)
 (:NAME "articUnstressAbove" :CODE 58552 :DESCRIPTION "Unstress above"
@@ -1300,24 +1304,24 @@
 (:NAME "articUnstressBelow" :CODE 58553 :DESCRIPTION "Unstress below"
  :ALTERNATES NIL)
 (:NAME "augmentationDot" :CODE 57831 :DESCRIPTION "Augmentation dot"
- :ALTERNATES (119149))
+ :ALTERNATES (#\MUSICAL_SYMBOL_COMBINING_AUGMENTATION_DOT))
 (:NAME "barlineDashed" :CODE 57398 :DESCRIPTION "Dashed barline" :ALTERNATES
- (119044))
+ (#\MUSICAL_SYMBOL_DASHED_BARLINE))
 (:NAME "barlineDotted" :CODE 57399 :DESCRIPTION "Dotted barline" :ALTERNATES
  NIL)
 (:NAME "barlineDouble" :CODE 57393 :DESCRIPTION "Double barline" :ALTERNATES
- (119041))
+ (#\MUSICAL_SYMBOL_DOUBLE_BARLINE))
 (:NAME "barlineFinal" :CODE 57394 :DESCRIPTION "Final barline" :ALTERNATES
- (119042))
+ (#\MUSICAL_SYMBOL_FINAL_BARLINE))
 (:NAME "barlineHeavy" :CODE 57396 :DESCRIPTION "Heavy barline" :ALTERNATES NIL)
 (:NAME "barlineHeavyHeavy" :CODE 57397 :DESCRIPTION "Heavy double barline"
  :ALTERNATES NIL)
 (:NAME "barlineReverseFinal" :CODE 57395 :DESCRIPTION "Reverse final barline"
- :ALTERNATES (119043))
+ :ALTERNATES (#\MUSICAL_SYMBOL_REVERSE_FINAL_BARLINE))
 (:NAME "barlineShort" :CODE 57400 :DESCRIPTION "Short barline" :ALTERNATES
- (119045))
+ (#\MUSICAL_SYMBOL_SHORT_BARLINE))
 (:NAME "barlineSingle" :CODE 57392 :DESCRIPTION "Single barline" :ALTERNATES
- (119040))
+ (#\MUSICAL_SYMBOL_SINGLE_BARLINE))
 (:NAME "barlineTick" :CODE 57401 :DESCRIPTION "Tick barline" :ALTERNATES NIL)
 (:NAME "beamAccelRit1" :CODE 60148 :DESCRIPTION "Accel./rit. beam 1 (widest)"
  :ALTERNATES NIL)
@@ -1351,23 +1355,26 @@
  :ALTERNATES NIL)
 (:NAME "beamAccelRitFinal" :CODE 60163 :DESCRIPTION
  "Accel./rit. beam terminating line" :ALTERNATES NIL)
-(:NAME "brace" :CODE 57344 :DESCRIPTION "Brace" :ALTERNATES (119060))
-(:NAME "bracket" :CODE 57346 :DESCRIPTION "Bracket" :ALTERNATES (119061))
+(:NAME "brace" :CODE 57344 :DESCRIPTION "Brace" :ALTERNATES
+ (#\MUSICAL_SYMBOL_BRACE))
+(:NAME "bracket" :CODE 57346 :DESCRIPTION "Bracket" :ALTERNATES
+ (#\MUSICAL_SYMBOL_BRACKET))
 (:NAME "bracketBottom" :CODE 57348 :DESCRIPTION "Bracket bottom" :ALTERNATES
  NIL)
 (:NAME "bracketTop" :CODE 57347 :DESCRIPTION "Bracket top" :ALTERNATES NIL)
-(:NAME "brassBend" :CODE 58851 :DESCRIPTION "Bend" :ALTERNATES (119177))
+(:NAME "brassBend" :CODE 58851 :DESCRIPTION "Bend" :ALTERNATES
+ (#\MUSICAL_SYMBOL_COMBINING_BEND))
 (:NAME "brassDoitLong" :CODE 58838 :DESCRIPTION "Doit, long" :ALTERNATES NIL)
 (:NAME "brassDoitMedium" :CODE 58837 :DESCRIPTION "Doit, medium" :ALTERNATES
  NIL)
 (:NAME "brassDoitShort" :CODE 58836 :DESCRIPTION "Doit, short" :ALTERNATES
- (119173))
+ (#\MUSICAL_SYMBOL_COMBINING_DOIT))
 (:NAME "brassFallLipLong" :CODE 58841 :DESCRIPTION "Lip fall, long" :ALTERNATES
  NIL)
 (:NAME "brassFallLipMedium" :CODE 58840 :DESCRIPTION "Lip fall, medium"
  :ALTERNATES NIL)
 (:NAME "brassFallLipShort" :CODE 58839 :DESCRIPTION "Lip fall, short"
- :ALTERNATES (119174))
+ :ALTERNATES (#\MUSICAL_SYMBOL_COMBINING_RIP))
 (:NAME "brassFallRoughLong" :CODE 58847 :DESCRIPTION "Rough fall, long"
  :ALTERNATES NIL)
 (:NAME "brassFallRoughMedium" :CODE 58846 :DESCRIPTION "Rough fall, medium"
@@ -1380,7 +1387,8 @@
  :ALTERNATES NIL)
 (:NAME "brassFallSmoothShort" :CODE 58842 :DESCRIPTION "Smooth fall, short"
  :ALTERNATES NIL)
-(:NAME "brassFlip" :CODE 58849 :DESCRIPTION "Flip" :ALTERNATES (119175))
+(:NAME "brassFlip" :CODE 58849 :DESCRIPTION "Flip" :ALTERNATES
+ (#\MUSICAL_SYMBOL_COMBINING_FLIP))
 (:NAME "brassHarmonMuteClosed" :CODE 58856 :DESCRIPTION "Harmon mute, stem in"
  :ALTERNATES NIL)
 (:NAME "brassHarmonMuteStemHalfLeft" :CODE 58857 :DESCRIPTION
@@ -1407,10 +1415,11 @@
 (:NAME "brassMuteOpen" :CODE 58855 :DESCRIPTION "Open" :ALTERNATES NIL)
 (:NAME "brassPlop" :CODE 58848 :DESCRIPTION "Plop" :ALTERNATES NIL)
 (:NAME "brassScoop" :CODE 58832 :DESCRIPTION "Scoop" :ALTERNATES NIL)
-(:NAME "brassSmear" :CODE 58850 :DESCRIPTION "Smear" :ALTERNATES (119176))
+(:NAME "brassSmear" :CODE 58850 :DESCRIPTION "Smear" :ALTERNATES
+ (#\MUSICAL_SYMBOL_COMBINING_SMEAR))
 (:NAME "brassValveTrill" :CODE 58863 :DESCRIPTION "Valve trill" :ALTERNATES NIL)
 (:NAME "breathMarkComma" :CODE 58574 :DESCRIPTION "Breath mark (comma)"
- :ALTERNATES (119058))
+ :ALTERNATES (#\MUSICAL_SYMBOL_BREATH_MARK))
 (:NAME "breathMarkSalzedo" :CODE 58581 :DESCRIPTION "Breath mark (Salzedo)"
  :ALTERNATES NIL)
 (:NAME "breathMarkTick" :CODE 58575 :DESCRIPTION "Breath mark (tick-like)"
@@ -1419,7 +1428,8 @@
  :ALTERNATES NIL)
 (:NAME "bridgeClef" :CODE 57464 :DESCRIPTION "Bridge clef" :ALTERNATES NIL)
 (:NAME "buzzRoll" :CODE 57898 :DESCRIPTION "Buzz roll" :ALTERNATES NIL)
-(:NAME "cClef" :CODE 57436 :DESCRIPTION "C clef" :ALTERNATES (119073))
+(:NAME "cClef" :CODE 57436 :DESCRIPTION "C clef" :ALTERNATES
+ (#\MUSICAL_SYMBOL_C_CLEF))
 (:NAME "cClef8vb" :CODE 57437 :DESCRIPTION "C clef ottava bassa" :ALTERNATES
  NIL)
 (:NAME "cClefArrowDown" :CODE 57439 :DESCRIPTION "C clef, arrow down"
@@ -1433,7 +1443,8 @@
  NIL)
 (:NAME "cClefSquare" :CODE 57440 :DESCRIPTION "C clef (19th century)"
  :ALTERNATES NIL)
-(:NAME "caesura" :CODE 58577 :DESCRIPTION "Caesura" :ALTERNATES (119059))
+(:NAME "caesura" :CODE 58577 :DESCRIPTION "Caesura" :ALTERNATES
+ (#\MUSICAL_SYMBOL_CAESURA))
 (:NAME "caesuraCurved" :CODE 58580 :DESCRIPTION "Curved caesura" :ALTERNATES
  NIL)
 (:NAME "caesuraShort" :CODE 58579 :DESCRIPTION "Short caesura" :ALTERNATES NIL)
@@ -1452,7 +1463,7 @@
  NIL)
 (:NAME "chantCaesura" :CODE 59640 :DESCRIPTION "Caesura" :ALTERNATES NIL)
 (:NAME "chantCclef" :CODE 59654 :DESCRIPTION "Plainchant C clef" :ALTERNATES
- (119248))
+ (#\MUSICAL_SYMBOL_GREGORIAN_C_CLEF))
 (:NAME "chantCirculusAbove" :CODE 59858 :DESCRIPTION "Circulus above"
  :ALTERNATES NIL)
 (:NAME "chantCirculusBelow" :CODE 59859 :DESCRIPTION "Circulus below"
@@ -1503,7 +1514,7 @@
  "Entry line, ascending 6th" :ALTERNATES NIL)
 (:NAME "chantEpisema" :CODE 59864 :DESCRIPTION "Episema" :ALTERNATES NIL)
 (:NAME "chantFclef" :CODE 59650 :DESCRIPTION "Plainchant F clef" :ALTERNATES
- (119249))
+ (#\MUSICAL_SYMBOL_GREGORIAN_F_CLEF))
 (:NAME "chantIctusAbove" :CODE 59856 :DESCRIPTION "Ictus above" :ALTERNATES NIL)
 (:NAME "chantIctusBelow" :CODE 59857 :DESCRIPTION "Ictus below" :ALTERNATES NIL)
 (:NAME "chantLigaturaDesc2nd" :CODE 59833 :DESCRIPTION
@@ -1523,7 +1534,7 @@
 (:NAME "chantPodatusLower" :CODE 59824 :DESCRIPTION "Podatus, lower"
  :ALTERNATES NIL)
 (:NAME "chantPodatusUpper" :CODE 59825 :DESCRIPTION "Podatus, upper"
- :ALTERNATES (119252))
+ :ALTERNATES (#\MUSICAL_SYMBOL_PODATUS))
 (:NAME "chantPunctum" :CODE 59792 :DESCRIPTION "Punctum" :ALTERNATES NIL)
 (:NAME "chantPunctumCavum" :CODE 59800 :DESCRIPTION "Punctum cavum" :ALTERNATES
  NIL)
@@ -1540,7 +1551,7 @@
 (:NAME "chantPunctumLineaCavum" :CODE 59802 :DESCRIPTION "Punctum linea cavum"
  :ALTERNATES NIL)
 (:NAME "chantPunctumVirga" :CODE 59798 :DESCRIPTION "Punctum virga" :ALTERNATES
- (119251))
+ (#\MUSICAL_SYMBOL_VIRGA))
 (:NAME "chantPunctumVirgaReversed" :CODE 59799 :DESCRIPTION
  "Punctum virga, reversed" :ALTERNATES NIL)
 (:NAME "chantQuilisma" :CODE 59803 :DESCRIPTION "Quilisma" :ALTERNATES NIL)
@@ -1569,7 +1580,8 @@
 (:NAME "clef8" :CODE 57469 :DESCRIPTION "8 for clefs" :ALTERNATES NIL)
 (:NAME "clefChangeCombining" :CODE 57471 :DESCRIPTION "Combining clef change"
  :ALTERNATES NIL)
-(:NAME "coda" :CODE 57416 :DESCRIPTION "Coda" :ALTERNATES (119052))
+(:NAME "coda" :CODE 57416 :DESCRIPTION "Coda" :ALTERNATES
+ (#\MUSICAL_SYMBOL_CODA))
 (:NAME "codaSquare" :CODE 57417 :DESCRIPTION "Square coda" :ALTERNATES NIL)
 (:NAME "conductorBeat2Compound" :CODE 59543 :DESCRIPTION
  "Beat 2, compound time" :ALTERNATES NIL)
@@ -1594,20 +1606,21 @@
 (:NAME "conductorWeakBeat" :CODE 59539 :DESCRIPTION "Weak beat or cue"
  :ALTERNATES NIL)
 (:NAME "controlBeginBeam" :CODE 59616 :DESCRIPTION "Begin beam" :ALTERNATES
- (119155))
+ (#\MUSICAL_SYMBOL_BEGIN_BEAM))
 (:NAME "controlBeginPhrase" :CODE 59622 :DESCRIPTION "Begin phrase" :ALTERNATES
- (119161))
+ (#\MUSICAL_SYMBOL_BEGIN_PHRASE))
 (:NAME "controlBeginSlur" :CODE 59620 :DESCRIPTION "Begin slur" :ALTERNATES
- (119159))
+ (#\MUSICAL_SYMBOL_BEGIN_SLUR))
 (:NAME "controlBeginTie" :CODE 59618 :DESCRIPTION "Begin tie" :ALTERNATES
- (119157))
+ (#\MUSICAL_SYMBOL_BEGIN_TIE))
 (:NAME "controlEndBeam" :CODE 59617 :DESCRIPTION "End beam" :ALTERNATES
- (119156))
+ (#\MUSICAL_SYMBOL_END_BEAM))
 (:NAME "controlEndPhrase" :CODE 59623 :DESCRIPTION "End phrase" :ALTERNATES
- (119162))
+ (#\MUSICAL_SYMBOL_END_PHRASE))
 (:NAME "controlEndSlur" :CODE 59621 :DESCRIPTION "End slur" :ALTERNATES
- (119160))
-(:NAME "controlEndTie" :CODE 59619 :DESCRIPTION "End tie" :ALTERNATES (119158))
+ (#\MUSICAL_SYMBOL_END_SLUR))
+(:NAME "controlEndTie" :CODE 59619 :DESCRIPTION "End tie" :ALTERNATES
+ (#\MUSICAL_SYMBOL_END_TIE))
 (:NAME "csymAccidentalDoubleFlat" :CODE 60772 :DESCRIPTION "Double flat"
  :ALTERNATES NIL)
 (:NAME "csymAccidentalDoubleSharp" :CODE 60771 :DESCRIPTION "Double sharp"
@@ -1630,7 +1643,7 @@
 (:NAME "csymDiagonalArrangementSlash" :CODE 59516 :DESCRIPTION
  "Slash for chord symbols arranged diagonally" :ALTERNATES NIL)
 (:NAME "csymDiminished" :CODE 59504 :DESCRIPTION "Diminished" :ALTERNATES
- (119209))
+ (#\MUSICAL_SYMBOL_DEGREE_SLASH))
 (:NAME "csymHalfDiminished" :CODE 59505 :DESCRIPTION "Half-diminished"
  :ALTERNATES NIL)
 (:NAME "csymMajorSeventh" :CODE 59507 :DESCRIPTION "Major seventh" :ALTERNATES
@@ -1645,8 +1658,10 @@
 (:NAME "csymParensRightVeryTall" :CODE 59514 :DESCRIPTION
  "Triple-height right parenthesis" :ALTERNATES NIL)
 (:NAME "curlewSign" :CODE 58582 :DESCRIPTION "Curlew (Britten)" :ALTERNATES NIL)
-(:NAME "daCapo" :CODE 57414 :DESCRIPTION "Da capo" :ALTERNATES (119050))
-(:NAME "dalSegno" :CODE 57413 :DESCRIPTION "Dal segno" :ALTERNATES (119049))
+(:NAME "daCapo" :CODE 57414 :DESCRIPTION "Da capo" :ALTERNATES
+ (#\MUSICAL_SYMBOL_DA_CAPO))
+(:NAME "dalSegno" :CODE 57413 :DESCRIPTION "Dal segno" :ALTERNATES
+ (#\MUSICAL_SYMBOL_DAL_SEGNO))
 (:NAME "daseianExcellentes1" :CODE 59964 :DESCRIPTION "Daseian excellentes 1"
  :ALTERNATES NIL)
 (:NAME "daseianExcellentes2" :CODE 59965 :DESCRIPTION "Daseian excellentes 2"
@@ -1686,7 +1701,7 @@
 (:NAME "doubleLateralRollStevens" :CODE 57908 :DESCRIPTION
  "Double lateral roll (Stevens)" :ALTERNATES NIL)
 (:NAME "doubleTongueAbove" :CODE 58864 :DESCRIPTION "Double-tongue above"
- :ALTERNATES (119178))
+ :ALTERNATES (#\MUSICAL_SYMBOL_COMBINING_DOUBLE_TONGUE))
 (:NAME "doubleTongueBelow" :CODE 58865 :DESCRIPTION "Double-tongue below"
  :ALTERNATES NIL)
 (:NAME "dynamicCombinedSeparatorColon" :CODE 58694 :DESCRIPTION
@@ -1698,15 +1713,16 @@
 (:NAME "dynamicCombinedSeparatorSpace" :CODE 58696 :DESCRIPTION
  "Space separator for combined dynamics" :ALTERNATES NIL)
 (:NAME "dynamicCrescendoHairpin" :CODE 58686 :DESCRIPTION "Crescendo"
- :ALTERNATES (119186))
+ :ALTERNATES (#\MUSICAL_SYMBOL_CRESCENDO))
 (:NAME "dynamicDiminuendoHairpin" :CODE 58687 :DESCRIPTION "Diminuendo"
- :ALTERNATES (119187))
+ :ALTERNATES (#\MUSICAL_SYMBOL_DECRESCENDO))
 (:NAME "dynamicFF" :CODE 58671 :DESCRIPTION "ff" :ALTERNATES NIL)
 (:NAME "dynamicFFF" :CODE 58672 :DESCRIPTION "fff" :ALTERNATES NIL)
 (:NAME "dynamicFFFF" :CODE 58673 :DESCRIPTION "ffff" :ALTERNATES NIL)
 (:NAME "dynamicFFFFF" :CODE 58674 :DESCRIPTION "fffff" :ALTERNATES NIL)
 (:NAME "dynamicFFFFFF" :CODE 58675 :DESCRIPTION "ffffff" :ALTERNATES NIL)
-(:NAME "dynamicForte" :CODE 58658 :DESCRIPTION "Forte" :ALTERNATES (119185))
+(:NAME "dynamicForte" :CODE 58658 :DESCRIPTION "Forte" :ALTERNATES
+ (#\MUSICAL_SYMBOL_FORTE))
 (:NAME "dynamicFortePiano" :CODE 58676 :DESCRIPTION "Forte-piano" :ALTERNATES
  NIL)
 (:NAME "dynamicForzando" :CODE 58677 :DESCRIPTION "Forzando" :ALTERNATES NIL)
@@ -1722,7 +1738,8 @@
 (:NAME "dynamicMP" :CODE 58668 :DESCRIPTION "mp" :ALTERNATES NIL)
 (:NAME "dynamicMessaDiVoce" :CODE 58688 :DESCRIPTION "Messa di voce"
  :ALTERNATES NIL)
-(:NAME "dynamicMezzo" :CODE 58657 :DESCRIPTION "Mezzo" :ALTERNATES (119184))
+(:NAME "dynamicMezzo" :CODE 58657 :DESCRIPTION "Mezzo" :ALTERNATES
+ (#\MUSICAL_SYMBOL_MEZZO))
 (:NAME "dynamicNiente" :CODE 58662 :DESCRIPTION "Niente" :ALTERNATES NIL)
 (:NAME "dynamicNienteForHairpin" :CODE 58689 :DESCRIPTION
  "Niente (for hairpins)" :ALTERNATES NIL)
@@ -1732,15 +1749,16 @@
 (:NAME "dynamicPPPP" :CODE 58665 :DESCRIPTION "pppp" :ALTERNATES NIL)
 (:NAME "dynamicPPPPP" :CODE 58664 :DESCRIPTION "ppppp" :ALTERNATES NIL)
 (:NAME "dynamicPPPPPP" :CODE 58663 :DESCRIPTION "pppppp" :ALTERNATES NIL)
-(:NAME "dynamicPiano" :CODE 58656 :DESCRIPTION "Piano" :ALTERNATES (119183))
+(:NAME "dynamicPiano" :CODE 58656 :DESCRIPTION "Piano" :ALTERNATES
+ (#\MUSICAL_SYMBOL_PIANO))
 (:NAME "dynamicRinforzando" :CODE 58659 :DESCRIPTION "Rinforzando" :ALTERNATES
- (119180))
+ (#\MUSICAL_SYMBOL_RINFORZANDO))
 (:NAME "dynamicRinforzando1" :CODE 58684 :DESCRIPTION "Rinforzando 1"
  :ALTERNATES NIL)
 (:NAME "dynamicRinforzando2" :CODE 58685 :DESCRIPTION "Rinforzando 2"
  :ALTERNATES NIL)
 (:NAME "dynamicSforzando" :CODE 58660 :DESCRIPTION "Sforzando" :ALTERNATES
- (119181))
+ (#\MUSICAL_SYMBOL_SUBITO))
 (:NAME "dynamicSforzando1" :CODE 58678 :DESCRIPTION "Sforzando 1" :ALTERNATES
  NIL)
 (:NAME "dynamicSforzandoPianissimo" :CODE 58680 :DESCRIPTION
@@ -1752,7 +1770,7 @@
  NIL)
 (:NAME "dynamicSforzatoPiano" :CODE 58682 :DESCRIPTION "Sforzato-piano"
  :ALTERNATES NIL)
-(:NAME "dynamicZ" :CODE 58661 :DESCRIPTION "Z" :ALTERNATES (119182))
+(:NAME "dynamicZ" :CODE 58661 :DESCRIPTION "Z" :ALTERNATES (#\MUSICAL_SYMBOL_Z))
 (:NAME "elecAudioChannelsEight" :CODE 60230 :DESCRIPTION
  "Eight channels (7.1 surround)" :ALTERNATES NIL)
 (:NAME "elecAudioChannelsFive" :CODE 60227 :DESCRIPTION "Five channels"
@@ -1850,15 +1868,16 @@
  :ALTERNATES NIL)
 (:NAME "elecVolumeLevel80" :CODE 60210 :DESCRIPTION "Volume level 80%"
  :ALTERNATES NIL)
-(:NAME "fClef" :CODE 57442 :DESCRIPTION "F clef" :ALTERNATES (119074))
+(:NAME "fClef" :CODE 57442 :DESCRIPTION "F clef" :ALTERNATES
+ (#\MUSICAL_SYMBOL_F_CLEF))
 (:NAME "fClef15ma" :CODE 57446 :DESCRIPTION "F clef quindicesima alta"
  :ALTERNATES NIL)
 (:NAME "fClef15mb" :CODE 57443 :DESCRIPTION "F clef quindicesima bassa"
  :ALTERNATES NIL)
 (:NAME "fClef8va" :CODE 57445 :DESCRIPTION "F clef ottava alta" :ALTERNATES
- (119075))
+ (#\MUSICAL_SYMBOL_F_CLEF_OTTAVA_ALTA))
 (:NAME "fClef8vb" :CODE 57444 :DESCRIPTION "F clef ottava bassa" :ALTERNATES
- (119076))
+ (#\MUSICAL_SYMBOL_F_CLEF_OTTAVA_BASSA))
 (:NAME "fClefArrowDown" :CODE 57448 :DESCRIPTION "F clef, arrow down"
  :ALTERNATES NIL)
 (:NAME "fClefArrowUp" :CODE 57447 :DESCRIPTION "F clef, arrow up" :ALTERNATES
@@ -1868,9 +1887,9 @@
  NIL)
 (:NAME "fClefTurned" :CODE 57463 :DESCRIPTION "Turned F clef" :ALTERNATES NIL)
 (:NAME "fermataAbove" :CODE 58560 :DESCRIPTION "Fermata above" :ALTERNATES
- (119056))
+ (#\MUSICAL_SYMBOL_FERMATA))
 (:NAME "fermataBelow" :CODE 58561 :DESCRIPTION "Fermata below" :ALTERNATES
- (119057))
+ (#\MUSICAL_SYMBOL_FERMATA_BELOW))
 (:NAME "fermataLongAbove" :CODE 58566 :DESCRIPTION "Long fermata above"
  :ALTERNATES NIL)
 (:NAME "fermataLongBelow" :CODE 58567 :DESCRIPTION "Long fermata below"
@@ -2051,11 +2070,11 @@
 (:NAME "flag128thDown" :CODE 57929 :DESCRIPTION
  "Combining flag 5 (128th) below" :ALTERNATES NIL)
 (:NAME "flag128thUp" :CODE 57928 :DESCRIPTION "Combining flag 5 (128th) above"
- :ALTERNATES (119154))
+ :ALTERNATES (#\MUSICAL_SYMBOL_COMBINING_FLAG-5))
 (:NAME "flag16thDown" :CODE 57923 :DESCRIPTION "Combining flag 2 (16th) below"
  :ALTERNATES NIL)
 (:NAME "flag16thUp" :CODE 57922 :DESCRIPTION "Combining flag 2 (16th) above"
- :ALTERNATES (119151))
+ :ALTERNATES (#\MUSICAL_SYMBOL_COMBINING_FLAG-2))
 (:NAME "flag256thDown" :CODE 57931 :DESCRIPTION
  "Combining flag 6 (256th) below" :ALTERNATES NIL)
 (:NAME "flag256thUp" :CODE 57930 :DESCRIPTION "Combining flag 6 (256th) above"
@@ -2063,7 +2082,7 @@
 (:NAME "flag32ndDown" :CODE 57925 :DESCRIPTION "Combining flag 3 (32nd) below"
  :ALTERNATES NIL)
 (:NAME "flag32ndUp" :CODE 57924 :DESCRIPTION "Combining flag 3 (32nd) above"
- :ALTERNATES (119152))
+ :ALTERNATES (#\MUSICAL_SYMBOL_COMBINING_FLAG-3))
 (:NAME "flag512thDown" :CODE 57933 :DESCRIPTION
  "Combining flag 7 (512th) below" :ALTERNATES NIL)
 (:NAME "flag512thUp" :CODE 57932 :DESCRIPTION "Combining flag 7 (512th) above"
@@ -2071,11 +2090,11 @@
 (:NAME "flag64thDown" :CODE 57927 :DESCRIPTION "Combining flag 4 (64th) below"
  :ALTERNATES NIL)
 (:NAME "flag64thUp" :CODE 57926 :DESCRIPTION "Combining flag 4 (64th) above"
- :ALTERNATES (119153))
+ :ALTERNATES (#\MUSICAL_SYMBOL_COMBINING_FLAG-4))
 (:NAME "flag8thDown" :CODE 57921 :DESCRIPTION "Combining flag 1 (8th) below"
  :ALTERNATES NIL)
 (:NAME "flag8thUp" :CODE 57920 :DESCRIPTION "Combining flag 1 (8th) above"
- :ALTERNATES (119150))
+ :ALTERNATES (#\MUSICAL_SYMBOL_COMBINING_FLAG-1))
 (:NAME "flagInternalDown" :CODE 57937 :DESCRIPTION
  "Internal combining flag below" :ALTERNATES NIL)
 (:NAME "flagInternalUp" :CODE 57936 :DESCRIPTION
@@ -2085,7 +2104,7 @@
 (:NAME "fretboard3StringNut" :CODE 59473 :DESCRIPTION
  "3-string fretboard at nut" :ALTERNATES NIL)
 (:NAME "fretboard4String" :CODE 59474 :DESCRIPTION "4-string fretboard"
- :ALTERNATES (119069))
+ :ALTERNATES (#\MUSICAL_SYMBOL_FOUR-STRING_FRETBOARD))
 (:NAME "fretboard4StringNut" :CODE 59475 :DESCRIPTION
  "4-string fretboard at nut" :ALTERNATES NIL)
 (:NAME "fretboard5String" :CODE 59476 :DESCRIPTION "5-string fretboard"
@@ -2093,7 +2112,7 @@
 (:NAME "fretboard5StringNut" :CODE 59477 :DESCRIPTION
  "5-string fretboard at nut" :ALTERNATES NIL)
 (:NAME "fretboard6String" :CODE 59478 :DESCRIPTION "6-string fretboard"
- :ALTERNATES (119068))
+ :ALTERNATES (#\MUSICAL_SYMBOL_SIX-STRING_FRETBOARD))
 (:NAME "fretboard6StringNut" :CODE 59479 :DESCRIPTION
  "6-string fretboard at nut" :ALTERNATES NIL)
 (:NAME "fretboardFilledCircle" :CODE 59480 :DESCRIPTION
@@ -2205,15 +2224,16 @@
  :ALTERNATES NIL)
 (:NAME "functionZero" :CODE 60016 :DESCRIPTION "Function theory 0" :ALTERNATES
  NIL)
-(:NAME "gClef" :CODE 57424 :DESCRIPTION "G clef" :ALTERNATES (119070))
+(:NAME "gClef" :CODE 57424 :DESCRIPTION "G clef" :ALTERNATES
+ (#\MUSICAL_SYMBOL_G_CLEF))
 (:NAME "gClef15ma" :CODE 57428 :DESCRIPTION "G clef quindicesima alta"
  :ALTERNATES NIL)
 (:NAME "gClef15mb" :CODE 57425 :DESCRIPTION "G clef quindicesima bassa"
  :ALTERNATES NIL)
 (:NAME "gClef8va" :CODE 57427 :DESCRIPTION "G clef ottava alta" :ALTERNATES
- (119071))
+ (#\MUSICAL_SYMBOL_G_CLEF_OTTAVA_ALTA))
 (:NAME "gClef8vb" :CODE 57426 :DESCRIPTION "G clef ottava bassa" :ALTERNATES
- (119072))
+ (#\MUSICAL_SYMBOL_G_CLEF_OTTAVA_BASSA))
 (:NAME "gClef8vbCClef" :CODE 57430 :DESCRIPTION
  "G clef ottava bassa with C clef" :ALTERNATES NIL)
 (:NAME "gClef8vbOld" :CODE 57429 :DESCRIPTION "G clef ottava bassa (old style)"
@@ -2233,17 +2253,17 @@
  NIL)
 (:NAME "gClefTurned" :CODE 57460 :DESCRIPTION "Turned G clef" :ALTERNATES NIL)
 (:NAME "glissandoDown" :CODE 58758 :DESCRIPTION "Glissando down" :ALTERNATES
- (119218))
+ (#\MUSICAL_SYMBOL_GLISSANDO_DOWN))
 (:NAME "glissandoUp" :CODE 58757 :DESCRIPTION "Glissando up" :ALTERNATES
- (119217))
+ (#\MUSICAL_SYMBOL_GLISSANDO_UP))
 (:NAME "graceNoteAcciaccaturaStemDown" :CODE 58721 :DESCRIPTION
  "Slashed grace note stem down" :ALTERNATES NIL)
 (:NAME "graceNoteAcciaccaturaStemUp" :CODE 58720 :DESCRIPTION
- "Slashed grace note stem up" :ALTERNATES (119188))
+ "Slashed grace note stem up" :ALTERNATES (#\MUSICAL_SYMBOL_GRACE_NOTE_SLASH))
 (:NAME "graceNoteAppoggiaturaStemDown" :CODE 58723 :DESCRIPTION
  "Grace note stem down" :ALTERNATES NIL)
 (:NAME "graceNoteAppoggiaturaStemUp" :CODE 58722 :DESCRIPTION
- "Grace note stem up" :ALTERNATES (119189))
+ "Grace note stem up" :ALTERNATES (#\MUSICAL_SYMBOL_GRACE_NOTE_NO_SLASH))
 (:NAME "graceNoteSlashStemDown" :CODE 58725 :DESCRIPTION
  "Slash for stem down grace note" :ALTERNATES NIL)
 (:NAME "graceNoteSlashStemUp" :CODE 58724 :DESCRIPTION
@@ -2512,7 +2532,7 @@
 (:NAME "keyboardPedalDot" :CODE 58964 :DESCRIPTION "Pedal dot" :ALTERNATES NIL)
 (:NAME "keyboardPedalE" :CODE 58962 :DESCRIPTION "Pedal e" :ALTERNATES NIL)
 (:NAME "keyboardPedalHalf" :CODE 58966 :DESCRIPTION "Half-pedal mark"
- :ALTERNATES (119216))
+ :ALTERNATES (#\MUSICAL_SYMBOL_HALF_PEDAL_MARK))
 (:NAME "keyboardPedalHalf2" :CODE 58971 :DESCRIPTION "Half pedal mark 1"
  :ALTERNATES NIL)
 (:NAME "keyboardPedalHalf3" :CODE 58972 :DESCRIPTION "Half pedal mark 2"
@@ -2539,7 +2559,7 @@
 (:NAME "keyboardPedalParensRight" :CODE 58999 :DESCRIPTION
  "Right parenthesis for pedal marking" :ALTERNATES NIL)
 (:NAME "keyboardPedalPed" :CODE 58960 :DESCRIPTION "Pedal mark" :ALTERNATES
- (119214))
+ (#\MUSICAL_SYMBOL_PEDAL_MARK))
 (:NAME "keyboardPedalS" :CODE 58970 :DESCRIPTION "Pedal S" :ALTERNATES NIL)
 (:NAME "keyboardPedalSost" :CODE 58969 :DESCRIPTION "Sostenuto pedal mark"
  :ALTERNATES NIL)
@@ -2550,7 +2570,7 @@
 (:NAME "keyboardPedalToeToHeel" :CODE 58997 :DESCRIPTION "Pedal toe to heel"
  :ALTERNATES NIL)
 (:NAME "keyboardPedalUp" :CODE 58965 :DESCRIPTION "Pedal up mark" :ALTERNATES
- (119215))
+ (#\MUSICAL_SYMBOL_PEDAL_UP_MARK))
 (:NAME "keyboardPedalUpNotch" :CODE 58967 :DESCRIPTION "Pedal up notch"
  :ALTERNATES NIL)
 (:NAME "keyboardPedalUpSpecial" :CODE 58973 :DESCRIPTION "Pedal up special"
@@ -2568,34 +2588,39 @@
 (:NAME "keyboardRightPedalPictogram" :CODE 58976 :DESCRIPTION
  "Right pedal pictogram" :ALTERNATES NIL)
 (:NAME "kievanAccidentalFlat" :CODE 60478 :DESCRIPTION "Kievan flat"
- :ALTERNATES (119272))
+ :ALTERNATES (#\MUSICAL_SYMBOL_KIEVAN_FLAT_SIGN))
 (:NAME "kievanAccidentalSharp" :CODE 60477 :DESCRIPTION "Kievan sharp"
  :ALTERNATES NIL)
 (:NAME "kievanAugmentationDot" :CODE 60476 :DESCRIPTION
  "Kievan augmentation dot" :ALTERNATES NIL)
 (:NAME "kievanCClef" :CODE 60464 :DESCRIPTION "Kievan C clef (tse-fa-ut)"
- :ALTERNATES (119262))
+ :ALTERNATES (#\MUSICAL_SYMBOL_KIEVAN_C_CLEF))
 (:NAME "kievanEndingSymbol" :CODE 60465 :DESCRIPTION "Kievan ending symbol"
- :ALTERNATES (119263))
+ :ALTERNATES (#\MUSICAL_SYMBOL_KIEVAN_END_OF_PIECE))
 (:NAME "kievanNote8thStemDown" :CODE 60474 :DESCRIPTION
- "Kievan eighth note, stem down" :ALTERNATES (119270))
+ "Kievan eighth note, stem down" :ALTERNATES
+ (#\MUSICAL_SYMBOL_KIEVAN_EIGHTH_NOTE_STEM_DOWN))
 (:NAME "kievanNote8thStemUp" :CODE 60473 :DESCRIPTION
- "Kievan eighth note, stem up" :ALTERNATES (119271))
+ "Kievan eighth note, stem up" :ALTERNATES
+ (#\MUSICAL_SYMBOL_KIEVAN_EIGHTH_NOTE_STEM_UP))
 (:NAME "kievanNoteBeam" :CODE 60475 :DESCRIPTION "Kievan beam" :ALTERNATES NIL)
 (:NAME "kievanNoteHalfStaffLine" :CODE 60469 :DESCRIPTION
- "Kievan half note (on staff line)" :ALTERNATES (119267))
+ "Kievan half note (on staff line)" :ALTERNATES
+ (#\MUSICAL_SYMBOL_KIEVAN_HALF_NOTE))
 (:NAME "kievanNoteHalfStaffSpace" :CODE 60470 :DESCRIPTION
  "Kievan half note (in staff space)" :ALTERNATES NIL)
 (:NAME "kievanNoteQuarterStemDown" :CODE 60472 :DESCRIPTION
- "Kievan quarter note, stem down" :ALTERNATES (119268))
+ "Kievan quarter note, stem down" :ALTERNATES
+ (#\MUSICAL_SYMBOL_KIEVAN_QUARTER_NOTE_STEM_DOWN))
 (:NAME "kievanNoteQuarterStemUp" :CODE 60471 :DESCRIPTION
- "Kievan quarter note, stem up" :ALTERNATES (119269))
+ "Kievan quarter note, stem up" :ALTERNATES
+ (#\MUSICAL_SYMBOL_KIEVAN_QUARTER_NOTE_STEM_UP))
 (:NAME "kievanNoteReciting" :CODE 60466 :DESCRIPTION "Kievan reciting note"
- :ALTERNATES (119265))
+ :ALTERNATES (#\MUSICAL_SYMBOL_KIEVAN_RECITATIVE_MARK))
 (:NAME "kievanNoteWhole" :CODE 60467 :DESCRIPTION "Kievan whole note"
- :ALTERNATES (119266))
+ :ALTERNATES (#\MUSICAL_SYMBOL_KIEVAN_WHOLE_NOTE))
 (:NAME "kievanNoteWholeFinal" :CODE 60468 :DESCRIPTION
- "Kievan final whole note" :ALTERNATES (119264))
+ "Kievan final whole note" :ALTERNATES (#\MUSICAL_SYMBOL_KIEVAN_FINAL_NOTE))
 (:NAME "kodalyHandDo" :CODE 60480 :DESCRIPTION "Do hand sign" :ALTERNATES NIL)
 (:NAME "kodalyHandFa" :CODE 60483 :DESCRIPTION "Fa hand sign" :ALTERNATES NIL)
 (:NAME "kodalyHandLa" :CODE 60485 :DESCRIPTION "La hand sign" :ALTERNATES NIL)
@@ -2820,7 +2845,7 @@
 (:NAME "medRenFlatHardB" :CODE 59873 :DESCRIPTION "Flat, hard b (mi)"
  :ALTERNATES NIL)
 (:NAME "medRenFlatSoftB" :CODE 59872 :DESCRIPTION "Flat, soft b (fa)"
- :ALTERNATES (119250))
+ :ALTERNATES (#\MUSICAL_SYMBOL_SQUARE_B))
 (:NAME "medRenFlatWithDot" :CODE 59876 :DESCRIPTION "Flat with dot" :ALTERNATES
  NIL)
 (:NAME "medRenGClefCMN" :CODE 59940 :DESCRIPTION "G clef (Corpus Monodicum)"
@@ -2841,7 +2866,8 @@
  :ALTERNATES NIL)
 (:NAME "medRenQuilismaCMN" :CODE 59944 :DESCRIPTION
  "Quilisma (Corpus Monodicum)" :ALTERNATES NIL)
-(:NAME "medRenSharpCroix" :CODE 59875 :DESCRIPTION "Croix" :ALTERNATES (119247))
+(:NAME "medRenSharpCroix" :CODE 59875 :DESCRIPTION "Croix" :ALTERNATES
+ (#\MUSICAL_SYMBOL_CROIX))
 (:NAME "medRenStrophicusCMN" :CODE 59945 :DESCRIPTION
  "Strophicus (Corpus Monodicum)" :ALTERNATES NIL)
 (:NAME "mensuralAlterationSign" :CODE 59920 :DESCRIPTION "Alteration sign"
@@ -2857,17 +2883,18 @@
 (:NAME "mensuralBlackMaxima" :CODE 59728 :DESCRIPTION "Black mensural maxima"
  :ALTERNATES NIL)
 (:NAME "mensuralBlackMinima" :CODE 59732 :DESCRIPTION "Black mensural minima"
- :ALTERNATES (119228))
+ :ALTERNATES (#\MUSICAL_SYMBOL_MINIMA_BLACK))
 (:NAME "mensuralBlackMinimaVoid" :CODE 59736 :DESCRIPTION
- "Black mensural void minima" :ALTERNATES (119227))
+ "Black mensural void minima" :ALTERNATES (#\MUSICAL_SYMBOL_MINIMA))
 (:NAME "mensuralBlackSemibrevis" :CODE 59731 :DESCRIPTION
- "Black mensural semibrevis" :ALTERNATES (119226))
+ "Black mensural semibrevis" :ALTERNATES (#\MUSICAL_SYMBOL_SEMIBREVIS_BLACK))
 (:NAME "mensuralBlackSemibrevisCaudata" :CODE 59737 :DESCRIPTION
  "Black mensural semibrevis caudata" :ALTERNATES NIL)
 (:NAME "mensuralBlackSemibrevisOblique" :CODE 59739 :DESCRIPTION
  "Black mensural oblique semibrevis" :ALTERNATES NIL)
 (:NAME "mensuralBlackSemibrevisVoid" :CODE 59735 :DESCRIPTION
- "Black mensural void semibrevis" :ALTERNATES (119225))
+ "Black mensural void semibrevis" :ALTERNATES
+ (#\MUSICAL_SYMBOL_SEMIBREVIS_WHITE))
 (:NAME "mensuralBlackSemiminima" :CODE 59733 :DESCRIPTION
  "Black mensural semiminima" :ALTERNATES NIL)
 (:NAME "mensuralCclef" :CODE 59653 :DESCRIPTION "Mensural C clef" :ALTERNATES
@@ -3033,32 +3060,36 @@
 (:NAME "mensuralObliqueDesc5thWhite" :CODE 59791 :DESCRIPTION
  "Oblique form, descending 5th, white" :ALTERNATES NIL)
 (:NAME "mensuralProlation1" :CODE 59664 :DESCRIPTION
- "Tempus perfectum cum prolatione perfecta (9/8)" :ALTERNATES (119239))
+ "Tempus perfectum cum prolatione perfecta (9/8)" :ALTERNATES
+ (#\MUSICAL_SYMBOL_TEMPUS_PERFECTUM_CUM_PROLATIONE_PERFECTA))
 (:NAME "mensuralProlation10" :CODE 59673 :DESCRIPTION
  "Tempus imperfectum cum prolatione imperfecta diminution 4" :ALTERNATES
- (119246))
+ (#\MUSICAL_SYMBOL_TEMPUS_IMPERFECTUM_CUM_PROLATIONE_IMPERFECTA_DIMINUTION-3))
 (:NAME "mensuralProlation11" :CODE 59674 :DESCRIPTION
  "Tempus imperfectum cum prolatione imperfecta diminution 5" :ALTERNATES NIL)
 (:NAME "mensuralProlation2" :CODE 59665 :DESCRIPTION
- "Tempus perfectum cum prolatione imperfecta (3/4)" :ALTERNATES (119240))
+ "Tempus perfectum cum prolatione imperfecta (3/4)" :ALTERNATES
+ (#\MUSICAL_SYMBOL_TEMPUS_PERFECTUM_CUM_PROLATIONE_IMPERFECTA))
 (:NAME "mensuralProlation3" :CODE 59666 :DESCRIPTION
  "Tempus perfectum cum prolatione imperfecta diminution 1 (3/8)" :ALTERNATES
- (119241))
+ (#\MUSICAL_SYMBOL_TEMPUS_PERFECTUM_CUM_PROLATIONE_PERFECTA_DIMINUTION-1))
 (:NAME "mensuralProlation4" :CODE 59667 :DESCRIPTION
  "Tempus perfectum cum prolatione perfecta diminution 2 (9/16)" :ALTERNATES NIL)
 (:NAME "mensuralProlation5" :CODE 59668 :DESCRIPTION
- "Tempus imperfectum cum prolatione perfecta (6/8)" :ALTERNATES (119242))
+ "Tempus imperfectum cum prolatione perfecta (6/8)" :ALTERNATES
+ (#\MUSICAL_SYMBOL_TEMPUS_IMPERFECTUM_CUM_PROLATIONE_PERFECTA))
 (:NAME "mensuralProlation6" :CODE 59669 :DESCRIPTION
- "Tempus imperfectum cum prolatione imperfecta (2/4)" :ALTERNATES (119243))
+ "Tempus imperfectum cum prolatione imperfecta (2/4)" :ALTERNATES
+ (#\MUSICAL_SYMBOL_TEMPUS_IMPERFECTUM_CUM_PROLATIONE_IMPERFECTA))
 (:NAME "mensuralProlation7" :CODE 59670 :DESCRIPTION
  "Tempus imperfectum cum prolatione imperfecta diminution 1 (2/2)" :ALTERNATES
- (119244))
+ (#\MUSICAL_SYMBOL_TEMPUS_IMPERFECTUM_CUM_PROLATIONE_IMPERFECTA_DIMINUTION-1))
 (:NAME "mensuralProlation8" :CODE 59671 :DESCRIPTION
  "Tempus imperfectum cum prolatione imperfecta diminution 2 (6/16)" :ALTERNATES
  NIL)
 (:NAME "mensuralProlation9" :CODE 59672 :DESCRIPTION
  "Tempus imperfectum cum prolatione imperfecta diminution 3 (2/2)" :ALTERNATES
- (119245))
+ (#\MUSICAL_SYMBOL_TEMPUS_IMPERFECTUM_CUM_PROLATIONE_IMPERFECTA_DIMINUTION-2))
 (:NAME "mensuralProlationCombiningDot" :CODE 59680 :DESCRIPTION "Combining dot"
  :ALTERNATES NIL)
 (:NAME "mensuralProlationCombiningDotVoid" :CODE 59684 :DESCRIPTION
@@ -3104,22 +3135,22 @@
 (:NAME "mensuralProportionTempusPerfectum" :CODE 59675 :DESCRIPTION
  "Tempus perfectum" :ALTERNATES NIL)
 (:NAME "mensuralRestBrevis" :CODE 59891 :DESCRIPTION "Brevis rest" :ALTERNATES
- (119235))
+ (#\MUSICAL_SYMBOL_BREVIS_REST))
 (:NAME "mensuralRestFusa" :CODE 59895 :DESCRIPTION "Fusa rest" :ALTERNATES NIL)
 (:NAME "mensuralRestLongaImperfecta" :CODE 59890 :DESCRIPTION
- "Longa imperfecta rest" :ALTERNATES (119234))
+ "Longa imperfecta rest" :ALTERNATES (#\MUSICAL_SYMBOL_LONGA_IMPERFECTA_REST))
 (:NAME "mensuralRestLongaPerfecta" :CODE 59889 :DESCRIPTION
- "Longa perfecta rest" :ALTERNATES (119233))
+ "Longa perfecta rest" :ALTERNATES (#\MUSICAL_SYMBOL_LONGA_PERFECTA_REST))
 (:NAME "mensuralRestMaxima" :CODE 59888 :DESCRIPTION "Maxima rest" :ALTERNATES
  NIL)
 (:NAME "mensuralRestMinima" :CODE 59893 :DESCRIPTION "Minima rest" :ALTERNATES
- (119237))
+ (#\MUSICAL_SYMBOL_MINIMA_REST))
 (:NAME "mensuralRestSemibrevis" :CODE 59892 :DESCRIPTION "Semibrevis rest"
- :ALTERNATES (119236))
+ :ALTERNATES (#\MUSICAL_SYMBOL_SEMIBREVIS_REST))
 (:NAME "mensuralRestSemifusa" :CODE 59896 :DESCRIPTION "Semifusa rest"
  :ALTERNATES NIL)
 (:NAME "mensuralRestSemiminima" :CODE 59894 :DESCRIPTION "Semiminima rest"
- :ALTERNATES (119238))
+ :ALTERNATES (#\MUSICAL_SYMBOL_SEMIMINIMA_REST))
 (:NAME "mensuralSignumDown" :CODE 59905 :DESCRIPTION "Signum congruentiae down"
  :ALTERNATES NIL)
 (:NAME "mensuralSignumUp" :CODE 59904 :DESCRIPTION "Signum congruentiae up"
@@ -3129,17 +3160,17 @@
 (:NAME "mensuralTempusPerfectumHoriz" :CODE 59694 :DESCRIPTION
  "Tempus perfectum, horizontal" :ALTERNATES NIL)
 (:NAME "mensuralWhiteBrevis" :CODE 59742 :DESCRIPTION "White mensural brevis"
- :ALTERNATES (119224))
+ :ALTERNATES (#\MUSICAL_SYMBOL_BREVIS))
 (:NAME "mensuralWhiteFusa" :CODE 59745 :DESCRIPTION "White mensural fusa"
- :ALTERNATES (119230))
+ :ALTERNATES (#\MUSICAL_SYMBOL_SEMIMINIMA_BLACK))
 (:NAME "mensuralWhiteLonga" :CODE 59741 :DESCRIPTION "White mensural longa"
- :ALTERNATES (119223))
+ :ALTERNATES (#\MUSICAL_SYMBOL_LONGA))
 (:NAME "mensuralWhiteMaxima" :CODE 59740 :DESCRIPTION "White mensural maxima"
- :ALTERNATES (119222))
+ :ALTERNATES (#\MUSICAL_SYMBOL_MAXIMA))
 (:NAME "mensuralWhiteMinima" :CODE 59743 :DESCRIPTION "White mensural minima"
  :ALTERNATES NIL)
 (:NAME "mensuralWhiteSemibrevis" :CODE 59746 :DESCRIPTION
- "White mensural semibrevis" :ALTERNATES (119225))
+ "White mensural semibrevis" :ALTERNATES (#\MUSICAL_SYMBOL_SEMIBREVIS_WHITE))
 (:NAME "mensuralWhiteSemiminima" :CODE 59744 :DESCRIPTION
  "White mensural semiminima" :ALTERNATES NIL)
 (:NAME "metAugmentationDot" :CODE 60599 :DESCRIPTION "Augmentation dot"
@@ -3205,11 +3236,12 @@
 (:NAME "note128thDown" :CODE 57824 :DESCRIPTION
  "128th note (semihemidemisemiquaver) stem down" :ALTERNATES NIL)
 (:NAME "note128thUp" :CODE 57823 :DESCRIPTION
- "128th note (semihemidemisemiquaver) stem up" :ALTERNATES (119140))
+ "128th note (semihemidemisemiquaver) stem up" :ALTERNATES
+ (#\MUSICAL_SYMBOL_ONE_HUNDRED_TWENTY-EIGHTH_NOTE))
 (:NAME "note16thDown" :CODE 57818 :DESCRIPTION
  "16th note (semiquaver) stem down" :ALTERNATES NIL)
 (:NAME "note16thUp" :CODE 57817 :DESCRIPTION "16th note (semiquaver) stem up"
- :ALTERNATES (119137))
+ :ALTERNATES (#\MUSICAL_SYMBOL_SIXTEENTH_NOTE))
 (:NAME "note256thDown" :CODE 57826 :DESCRIPTION
  "256th note (demisemihemidemisemiquaver) stem down" :ALTERNATES NIL)
 (:NAME "note256thUp" :CODE 57825 :DESCRIPTION
@@ -3217,7 +3249,8 @@
 (:NAME "note32ndDown" :CODE 57820 :DESCRIPTION
  "32nd note (demisemiquaver) stem down" :ALTERNATES NIL)
 (:NAME "note32ndUp" :CODE 57819 :DESCRIPTION
- "32nd note (demisemiquaver) stem up" :ALTERNATES (119138))
+ "32nd note (demisemiquaver) stem up" :ALTERNATES
+ (#\MUSICAL_SYMBOL_THIRTY-SECOND_NOTE))
 (:NAME "note512thDown" :CODE 57828 :DESCRIPTION
  "512th note (hemidemisemihemidemisemiquaver) stem down" :ALTERNATES NIL)
 (:NAME "note512thUp" :CODE 57827 :DESCRIPTION
@@ -3225,11 +3258,12 @@
 (:NAME "note64thDown" :CODE 57822 :DESCRIPTION
  "64th note (hemidemisemiquaver) stem down" :ALTERNATES NIL)
 (:NAME "note64thUp" :CODE 57821 :DESCRIPTION
- "64th note (hemidemisemiquaver) stem up" :ALTERNATES (119139))
+ "64th note (hemidemisemiquaver) stem up" :ALTERNATES
+ (#\MUSICAL_SYMBOL_SIXTY-FOURTH_NOTE))
 (:NAME "note8thDown" :CODE 57816 :DESCRIPTION "Eighth note (quaver) stem down"
  :ALTERNATES NIL)
 (:NAME "note8thUp" :CODE 57815 :DESCRIPTION "Eighth note (quaver) stem up"
- :ALTERNATES (119136))
+ :ALTERNATES (#\MUSICAL_SYMBOL_EIGHTH_NOTE))
 (:NAME "noteABlack" :CODE 57751 :DESCRIPTION "A (black note)" :ALTERNATES NIL)
 (:NAME "noteAFlatBlack" :CODE 57750 :DESCRIPTION "A flat (black note)"
  :ALTERNATES NIL)
@@ -3297,7 +3331,7 @@
 (:NAME "noteDoHalf" :CODE 57688 :DESCRIPTION "Do (half note)" :ALTERNATES NIL)
 (:NAME "noteDoWhole" :CODE 57680 :DESCRIPTION "Do (whole note)" :ALTERNATES NIL)
 (:NAME "noteDoubleWhole" :CODE 57808 :DESCRIPTION "Double whole note (breve)"
- :ALTERNATES (119132))
+ :ALTERNATES (#\MUSICAL_SYMBOL_BREVE))
 (:NAME "noteDoubleWholeSquare" :CODE 57809 :DESCRIPTION
  "Double whole note (square)" :ALTERNATES NIL)
 (:NAME "noteEBlack" :CODE 57763 :DESCRIPTION "E (black note)" :ALTERNATES NIL)
@@ -3369,7 +3403,7 @@
 (:NAME "noteHalfDown" :CODE 57812 :DESCRIPTION "Half note (minim) stem down"
  :ALTERNATES NIL)
 (:NAME "noteHalfUp" :CODE 57811 :DESCRIPTION "Half note (minim) stem up"
- :ALTERNATES (119134))
+ :ALTERNATES (#\MUSICAL_SYMBOL_HALF_NOTE))
 (:NAME "noteLaBlack" :CODE 57701 :DESCRIPTION "La (black note)" :ALTERNATES NIL)
 (:NAME "noteLaHalf" :CODE 57693 :DESCRIPTION "La (half note)" :ALTERNATES NIL)
 (:NAME "noteLaWhole" :CODE 57685 :DESCRIPTION "La (whole note)" :ALTERNATES NIL)
@@ -3388,7 +3422,7 @@
 (:NAME "noteQuarterDown" :CODE 57814 :DESCRIPTION
  "Quarter note (crotchet) stem down" :ALTERNATES NIL)
 (:NAME "noteQuarterUp" :CODE 57813 :DESCRIPTION
- "Quarter note (crotchet) stem up" :ALTERNATES (119135))
+ "Quarter note (crotchet) stem up" :ALTERNATES (#\MUSICAL_SYMBOL_QUARTER_NOTE))
 (:NAME "noteRaBlack" :CODE 61172 :DESCRIPTION "Ra (black note)" :ALTERNATES NIL)
 (:NAME "noteRaHalf" :CODE 61163 :DESCRIPTION "Ra (half note)" :ALTERNATES NIL)
 (:NAME "noteRaWhole" :CODE 61154 :DESCRIPTION "Ra (whole note)" :ALTERNATES NIL)
@@ -3499,13 +3533,13 @@
 (:NAME "noteTiHalf" :CODE 57694 :DESCRIPTION "Ti (half note)" :ALTERNATES NIL)
 (:NAME "noteTiWhole" :CODE 57686 :DESCRIPTION "Ti (whole note)" :ALTERNATES NIL)
 (:NAME "noteWhole" :CODE 57810 :DESCRIPTION "Whole note (semibreve)"
- :ALTERNATES (119133))
+ :ALTERNATES (#\MUSICAL_SYMBOL_WHOLE_NOTE))
 (:NAME "noteheadBlack" :CODE 57508 :DESCRIPTION "Black notehead" :ALTERNATES
- (119128))
+ (#\MUSICAL_SYMBOL_NOTEHEAD_BLACK))
 (:NAME "noteheadCircleSlash" :CODE 57591 :DESCRIPTION "Circle slash notehead"
  :ALTERNATES NIL)
 (:NAME "noteheadCircleX" :CODE 57523 :DESCRIPTION "Circle X notehead"
- :ALTERNATES (119109))
+ :ALTERNATES (#\MUSICAL_SYMBOL_CIRCLE_X_NOTEHEAD))
 (:NAME "noteheadCircleXDoubleWhole" :CODE 57520 :DESCRIPTION
  "Circle X double whole" :ALTERNATES NIL)
 (:NAME "noteheadCircleXHalf" :CODE 57522 :DESCRIPTION "Circle X half"
@@ -3565,9 +3599,11 @@
 (:NAME "noteheadClusterRoundWhite" :CODE 57634 :DESCRIPTION
  "Cluster notehead white (round)" :ALTERNATES NIL)
 (:NAME "noteheadClusterSquareBlack" :CODE 57633 :DESCRIPTION
- "Cluster notehead black (square)" :ALTERNATES (119131))
+ "Cluster notehead black (square)" :ALTERNATES
+ (#\MUSICAL_SYMBOL_CLUSTER_NOTEHEAD_BLACK))
 (:NAME "noteheadClusterSquareWhite" :CODE 57632 :DESCRIPTION
- "Cluster notehead white (square)" :ALTERNATES (119130))
+ "Cluster notehead white (square)" :ALTERNATES
+ (#\MUSICAL_SYMBOL_CLUSTER_NOTEHEAD_WHITE))
 (:NAME "noteheadClusterWhole2nd" :CODE 57637 :DESCRIPTION
  "Whole note cluster, 2nd" :ALTERNATES NIL)
 (:NAME "noteheadClusterWhole3rd" :CODE 57641 :DESCRIPTION
@@ -3675,7 +3711,7 @@
 (:NAME "noteheadDoubleWholeWithX" :CODE 57524 :DESCRIPTION
  "Double whole notehead with X" :ALTERNATES NIL)
 (:NAME "noteheadHalf" :CODE 57507 :DESCRIPTION "Half (minim) notehead"
- :ALTERNATES (119127))
+ :ALTERNATES (#\MUSICAL_SYMBOL_VOID_NOTEHEAD))
 (:NAME "noteheadHalfFilled" :CODE 57595 :DESCRIPTION
  "Filled half (minim) notehead" :ALTERNATES NIL)
 (:NAME "noteheadHalfWithX" :CODE 57526 :DESCRIPTION "Half notehead with X"
@@ -3701,21 +3737,21 @@
 (:NAME "noteheadLargeArrowUpWhole" :CODE 57582 :DESCRIPTION
  "Large arrow up (highest pitch) whole notehead" :ALTERNATES NIL)
 (:NAME "noteheadMoonBlack" :CODE 57547 :DESCRIPTION "Moon notehead black"
- :ALTERNATES (119123))
+ :ALTERNATES (#\MUSICAL_SYMBOL_MOON_NOTEHEAD_BLACK))
 (:NAME "noteheadMoonWhite" :CODE 57546 :DESCRIPTION "Moon notehead white"
- :ALTERNATES (119122))
+ :ALTERNATES (#\MUSICAL_SYMBOL_MOON_NOTEHEAD_WHITE))
 (:NAME "noteheadNancarrowSine" :CODE 61088 :DESCRIPTION
  "Sine notehead (Nancarrow)" :ALTERNATES NIL)
 (:NAME "noteheadNull" :CODE 57509 :DESCRIPTION "Null notehead" :ALTERNATES
- (119129))
+ (#\MUSICAL_SYMBOL_NULL_NOTEHEAD))
 (:NAME "noteheadParenthesis" :CODE 57550 :DESCRIPTION "Parenthesis notehead"
- :ALTERNATES (119126))
+ :ALTERNATES (#\MUSICAL_SYMBOL_PARENTHESIS_NOTEHEAD))
 (:NAME "noteheadParenthesisLeft" :CODE 57589 :DESCRIPTION "Opening parenthesis"
  :ALTERNATES NIL)
 (:NAME "noteheadParenthesisRight" :CODE 57590 :DESCRIPTION
  "Closing parenthesis" :ALTERNATES NIL)
 (:NAME "noteheadPlusBlack" :CODE 57519 :DESCRIPTION "Plus notehead black"
- :ALTERNATES (119108))
+ :ALTERNATES (#\MUSICAL_SYMBOL_PLUS_NOTEHEAD))
 (:NAME "noteheadPlusDoubleWhole" :CODE 57516 :DESCRIPTION
  "Plus notehead double whole" :ALTERNATES NIL)
 (:NAME "noteheadPlusHalf" :CODE 57518 :DESCRIPTION "Plus notehead half"
@@ -3761,7 +3797,7 @@
 (:NAME "noteheadSlashDiamondWhite" :CODE 57604 :DESCRIPTION
  "Large white diamond" :ALTERNATES NIL)
 (:NAME "noteheadSlashHorizontalEnds" :CODE 57601 :DESCRIPTION
- "Slash with horizontal ends" :ALTERNATES (119053))
+ "Slash with horizontal ends" :ALTERNATES (#\MUSICAL_SYMBOL_REPEATED_FIGURE-1))
 (:NAME "noteheadSlashHorizontalEndsMuted" :CODE 57608 :DESCRIPTION
  "Muted slash with horizontal ends" :ALTERNATES NIL)
 (:NAME "noteheadSlashVerticalEnds" :CODE 57600 :DESCRIPTION
@@ -3797,47 +3833,59 @@
 (:NAME "noteheadSlashedWhole2" :CODE 57556 :DESCRIPTION
  "Slashed whole notehead (top left to bottom right)" :ALTERNATES NIL)
 (:NAME "noteheadSquareBlack" :CODE 57529 :DESCRIPTION "Square notehead black"
- :ALTERNATES (119111))
+ :ALTERNATES (#\MUSICAL_SYMBOL_SQUARE_NOTEHEAD_BLACK))
 (:NAME "noteheadSquareBlackLarge" :CODE 57626 :DESCRIPTION
  "Large square black notehead" :ALTERNATES NIL)
 (:NAME "noteheadSquareBlackWhite" :CODE 57627 :DESCRIPTION
  "Large square white notehead" :ALTERNATES NIL)
 (:NAME "noteheadSquareWhite" :CODE 57528 :DESCRIPTION "Square notehead white"
- :ALTERNATES (119110))
+ :ALTERNATES (#\MUSICAL_SYMBOL_SQUARE_NOTEHEAD_WHITE))
 (:NAME "noteheadTriangleDownBlack" :CODE 57543 :DESCRIPTION
- "Triangle notehead down black" :ALTERNATES (119119))
+ "Triangle notehead down black" :ALTERNATES
+ (#\MUSICAL_SYMBOL_TRIANGLE_NOTEHEAD_DOWN_BLACK))
 (:NAME "noteheadTriangleDownDoubleWhole" :CODE 57539 :DESCRIPTION
  "Triangle notehead down double whole" :ALTERNATES NIL)
 (:NAME "noteheadTriangleDownHalf" :CODE 57541 :DESCRIPTION
  "Triangle notehead down half" :ALTERNATES NIL)
 (:NAME "noteheadTriangleDownWhite" :CODE 57542 :DESCRIPTION
- "Triangle notehead down white" :ALTERNATES (119118))
+ "Triangle notehead down white" :ALTERNATES
+ (#\MUSICAL_SYMBOL_TRIANGLE_NOTEHEAD_DOWN_WHITE))
 (:NAME "noteheadTriangleDownWhole" :CODE 57540 :DESCRIPTION
  "Triangle notehead down whole" :ALTERNATES NIL)
 (:NAME "noteheadTriangleLeftBlack" :CODE 57536 :DESCRIPTION
- "Triangle notehead left black" :ALTERNATES (119115))
+ "Triangle notehead left black" :ALTERNATES
+ (#\MUSICAL_SYMBOL_TRIANGLE_NOTEHEAD_LEFT_BLACK))
 (:NAME "noteheadTriangleLeftWhite" :CODE 57535 :DESCRIPTION
- "Triangle notehead left white" :ALTERNATES (119114))
+ "Triangle notehead left white" :ALTERNATES
+ (#\MUSICAL_SYMBOL_TRIANGLE_NOTEHEAD_LEFT_WHITE))
 (:NAME "noteheadTriangleRightBlack" :CODE 57538 :DESCRIPTION
- "Triangle notehead right black" :ALTERNATES (119117))
+ "Triangle notehead right black" :ALTERNATES
+ (#\MUSICAL_SYMBOL_TRIANGLE_NOTEHEAD_RIGHT_BLACK))
 (:NAME "noteheadTriangleRightWhite" :CODE 57537 :DESCRIPTION
- "Triangle notehead right white" :ALTERNATES (119116))
+ "Triangle notehead right white" :ALTERNATES
+ (#\MUSICAL_SYMBOL_TRIANGLE_NOTEHEAD_RIGHT_WHITE))
 (:NAME "noteheadTriangleRoundDownBlack" :CODE 57549 :DESCRIPTION
- "Triangle-round notehead down black" :ALTERNATES (119125))
+ "Triangle-round notehead down black" :ALTERNATES
+ (#\MUSICAL_SYMBOL_TRIANGLE-ROUND_NOTEHEAD_DOWN_BLACK))
 (:NAME "noteheadTriangleRoundDownWhite" :CODE 57548 :DESCRIPTION
- "Triangle-round notehead down white" :ALTERNATES (119124))
+ "Triangle-round notehead down white" :ALTERNATES
+ (#\MUSICAL_SYMBOL_TRIANGLE-ROUND_NOTEHEAD_DOWN_WHITE))
 (:NAME "noteheadTriangleUpBlack" :CODE 57534 :DESCRIPTION
- "Triangle notehead up black" :ALTERNATES (119113))
+ "Triangle notehead up black" :ALTERNATES
+ (#\MUSICAL_SYMBOL_TRIANGLE_NOTEHEAD_UP_BLACK))
 (:NAME "noteheadTriangleUpDoubleWhole" :CODE 57530 :DESCRIPTION
  "Triangle notehead up double whole" :ALTERNATES NIL)
 (:NAME "noteheadTriangleUpHalf" :CODE 57532 :DESCRIPTION
  "Triangle notehead up half" :ALTERNATES NIL)
 (:NAME "noteheadTriangleUpRightBlack" :CODE 57545 :DESCRIPTION
- "Triangle notehead up right black" :ALTERNATES (119121))
+ "Triangle notehead up right black" :ALTERNATES
+ (#\MUSICAL_SYMBOL_TRIANGLE_NOTEHEAD_UP_RIGHT_BLACK))
 (:NAME "noteheadTriangleUpRightWhite" :CODE 57544 :DESCRIPTION
- "Triangle notehead up right white" :ALTERNATES (119120))
+ "Triangle notehead up right white" :ALTERNATES
+ (#\MUSICAL_SYMBOL_TRIANGLE_NOTEHEAD_UP_RIGHT_WHITE))
 (:NAME "noteheadTriangleUpWhite" :CODE 57533 :DESCRIPTION
- "Triangle notehead up white" :ALTERNATES (119112))
+ "Triangle notehead up white" :ALTERNATES
+ (#\MUSICAL_SYMBOL_TRIANGLE_NOTEHEAD_UP_WHITE))
 (:NAME "noteheadTriangleUpWhole" :CODE 57531 :DESCRIPTION
  "Triangle notehead up whole" :ALTERNATES NIL)
 (:NAME "noteheadVoidWithX" :CODE 57527 :DESCRIPTION "Void notehead with X"
@@ -3849,7 +3897,7 @@
 (:NAME "noteheadWholeWithX" :CODE 57525 :DESCRIPTION "Whole notehead with X"
  :ALTERNATES NIL)
 (:NAME "noteheadXBlack" :CODE 57513 :DESCRIPTION "X notehead black" :ALTERNATES
- (119107))
+ (#\MUSICAL_SYMBOL_X_NOTEHEAD))
 (:NAME "noteheadXDoubleWhole" :CODE 57510 :DESCRIPTION
  "X notehead double whole" :ALTERNATES NIL)
 (:NAME "noteheadXHalf" :CODE 57512 :DESCRIPTION "X notehead half" :ALTERNATES
@@ -4010,11 +4058,13 @@
 (:NAME "ornamentBottomLeftConcaveStroke" :CODE 58778 :DESCRIPTION
  "Ornament bottom left concave stroke" :ALTERNATES NIL)
 (:NAME "ornamentBottomLeftConcaveStrokeLarge" :CODE 58779 :DESCRIPTION
- "Ornament bottom left concave stroke, large" :ALTERNATES (119201))
+ "Ornament bottom left concave stroke, large" :ALTERNATES
+ (#\MUSICAL_SYMBOL_ORNAMENT_STROKE-7))
 (:NAME "ornamentBottomLeftConvexStroke" :CODE 58780 :DESCRIPTION
  "Ornament bottom left convex stroke" :ALTERNATES NIL)
 (:NAME "ornamentBottomRightConcaveStroke" :CODE 58791 :DESCRIPTION
- "Ornament bottom right concave stroke" :ALTERNATES (119199))
+ "Ornament bottom right concave stroke" :ALTERNATES
+ (#\MUSICAL_SYMBOL_ORNAMENT_STROKE-5))
 (:NAME "ornamentBottomRightConvexStroke" :CODE 58792 :DESCRIPTION
  "Ornament bottom right convex stroke" :ALTERNATES NIL)
 (:NAME "ornamentComma" :CODE 58753 :DESCRIPTION "Comma" :ALTERNATES NIL)
@@ -4029,7 +4079,8 @@
 (:NAME "ornamentHighLeftConcaveStroke" :CODE 58770 :DESCRIPTION
  "Ornament high left concave stroke" :ALTERNATES NIL)
 (:NAME "ornamentHighLeftConvexStroke" :CODE 58771 :DESCRIPTION
- "Ornament high left convex stroke" :ALTERNATES (119202))
+ "Ornament high left convex stroke" :ALTERNATES
+ (#\MUSICAL_SYMBOL_ORNAMENT_STROKE-8))
 (:NAME "ornamentHighRightConcaveStroke" :CODE 58786 :DESCRIPTION
  "Ornament high right concave stroke" :ALTERNATES NIL)
 (:NAME "ornamentHighRightConvexStroke" :CODE 58787 :DESCRIPTION
@@ -4047,19 +4098,23 @@
 (:NAME "ornamentLeftShakeT" :CODE 58774 :DESCRIPTION "Ornament left shake t"
  :ALTERNATES NIL)
 (:NAME "ornamentLeftVerticalStroke" :CODE 58772 :DESCRIPTION
- "Ornament left vertical stroke" :ALTERNATES (119195))
+ "Ornament left vertical stroke" :ALTERNATES
+ (#\MUSICAL_SYMBOL_ORNAMENT_STROKE-1))
 (:NAME "ornamentLeftVerticalStrokeWithCross" :CODE 58773 :DESCRIPTION
  "Ornament left vertical stroke with cross (+)" :ALTERNATES NIL)
 (:NAME "ornamentLowLeftConcaveStroke" :CODE 58776 :DESCRIPTION
  "Ornament low left concave stroke" :ALTERNATES NIL)
 (:NAME "ornamentLowLeftConvexStroke" :CODE 58777 :DESCRIPTION
- "Ornament low left convex stroke" :ALTERNATES (119204))
+ "Ornament low left convex stroke" :ALTERNATES
+ (#\MUSICAL_SYMBOL_ORNAMENT_STROKE-10))
 (:NAME "ornamentLowRightConcaveStroke" :CODE 58789 :DESCRIPTION
- "Ornament low right concave stroke" :ALTERNATES (119203))
+ "Ornament low right concave stroke" :ALTERNATES
+ (#\MUSICAL_SYMBOL_ORNAMENT_STROKE-9))
 (:NAME "ornamentLowRightConvexStroke" :CODE 58790 :DESCRIPTION
  "Ornament low right convex stroke" :ALTERNATES NIL)
 (:NAME "ornamentMiddleVerticalStroke" :CODE 58783 :DESCRIPTION
- "Ornament middle vertical stroke" :ALTERNATES (119200))
+ "Ornament middle vertical stroke" :ALTERNATES
+ (#\MUSICAL_SYMBOL_ORNAMENT_STROKE-6))
 (:NAME "ornamentMordent" :CODE 58733 :DESCRIPTION "Mordent" :ALTERNATES NIL)
 (:NAME "ornamentObliqueLineAfterNote" :CODE 58748 :DESCRIPTION
  "Oblique straight line NW-SE" :ALTERNATES NIL)
@@ -4145,35 +4200,43 @@
 (:NAME "ornamentTopLeftConcaveStroke" :CODE 58768 :DESCRIPTION
  "Ornament top left concave stroke" :ALTERNATES NIL)
 (:NAME "ornamentTopLeftConvexStroke" :CODE 58769 :DESCRIPTION
- "Ornament top left convex stroke" :ALTERNATES (119205))
+ "Ornament top left convex stroke" :ALTERNATES
+ (#\MUSICAL_SYMBOL_ORNAMENT_STROKE-11))
 (:NAME "ornamentTopRightConcaveStroke" :CODE 58784 :DESCRIPTION
  "Ornament top right concave stroke" :ALTERNATES NIL)
 (:NAME "ornamentTopRightConvexStroke" :CODE 58785 :DESCRIPTION
- "Ornament top right convex stroke" :ALTERNATES (119198))
+ "Ornament top right convex stroke" :ALTERNATES
+ (#\MUSICAL_SYMBOL_ORNAMENT_STROKE-4))
 (:NAME "ornamentTremblement" :CODE 58734 :DESCRIPTION "Tremblement" :ALTERNATES
  NIL)
 (:NAME "ornamentTremblementCouperin" :CODE 58761 :DESCRIPTION
  "Tremblement appuyé (Couperin)" :ALTERNATES NIL)
-(:NAME "ornamentTrill" :CODE 58726 :DESCRIPTION "Trill" :ALTERNATES (119190))
-(:NAME "ornamentTurn" :CODE 58727 :DESCRIPTION "Turn" :ALTERNATES (119191))
+(:NAME "ornamentTrill" :CODE 58726 :DESCRIPTION "Trill" :ALTERNATES
+ (#\MUSICAL_SYMBOL_TR))
+(:NAME "ornamentTurn" :CODE 58727 :DESCRIPTION "Turn" :ALTERNATES
+ (#\MUSICAL_SYMBOL_TURN))
 (:NAME "ornamentTurnInverted" :CODE 58728 :DESCRIPTION "Inverted turn"
- :ALTERNATES (119192))
+ :ALTERNATES (#\MUSICAL_SYMBOL_INVERTED_TURN))
 (:NAME "ornamentTurnSlash" :CODE 58729 :DESCRIPTION "Turn with slash"
- :ALTERNATES (119193))
-(:NAME "ornamentTurnUp" :CODE 58730 :DESCRIPTION "Turn up" :ALTERNATES (119194))
+ :ALTERNATES (#\MUSICAL_SYMBOL_TURN_SLASH))
+(:NAME "ornamentTurnUp" :CODE 58730 :DESCRIPTION "Turn up" :ALTERNATES
+ (#\MUSICAL_SYMBOL_TURN_UP))
 (:NAME "ornamentTurnUpS" :CODE 58731 :DESCRIPTION "Inverted turn up"
  :ALTERNATES NIL)
 (:NAME "ornamentUpCurve" :CODE 58743 :DESCRIPTION "Curve above" :ALTERNATES NIL)
 (:NAME "ornamentVerticalLine" :CODE 58755 :DESCRIPTION "Vertical line"
  :ALTERNATES NIL)
 (:NAME "ornamentZigZagLineNoRightEnd" :CODE 58781 :DESCRIPTION
- "Ornament zig-zag line without right-hand end" :ALTERNATES (119196))
+ "Ornament zig-zag line without right-hand end" :ALTERNATES
+ (#\MUSICAL_SYMBOL_ORNAMENT_STROKE-2))
 (:NAME "ornamentZigZagLineWithRightEnd" :CODE 58782 :DESCRIPTION
- "Ornament zig-zag line with right-hand end" :ALTERNATES (119197))
+ "Ornament zig-zag line with right-hand end" :ALTERNATES
+ (#\MUSICAL_SYMBOL_ORNAMENT_STROKE-3))
 (:NAME "ottava" :CODE 58640 :DESCRIPTION "Ottava" :ALTERNATES NIL)
-(:NAME "ottavaAlta" :CODE 58641 :DESCRIPTION "Ottava alta" :ALTERNATES (119094))
+(:NAME "ottavaAlta" :CODE 58641 :DESCRIPTION "Ottava alta" :ALTERNATES
+ (#\MUSICAL_SYMBOL_OTTAVA_ALTA))
 (:NAME "ottavaBassa" :CODE 58642 :DESCRIPTION "Ottava bassa" :ALTERNATES
- (119095))
+ (#\MUSICAL_SYMBOL_OTTAVA_BASSA))
 (:NAME "ottavaBassaBa" :CODE 58643 :DESCRIPTION "Ottava bassa (ba)" :ALTERNATES
  NIL)
 (:NAME "ottavaBassaVb" :CODE 58652 :DESCRIPTION "Ottava bassa (8vb)"
@@ -4653,9 +4716,10 @@
  NIL)
 (:NAME "pluckedBuzzPizzicato" :CODE 58930 :DESCRIPTION "Buzz pizzicato"
  :ALTERNATES NIL)
-(:NAME "pluckedDamp" :CODE 58936 :DESCRIPTION "Damp" :ALTERNATES (119220))
+(:NAME "pluckedDamp" :CODE 58936 :DESCRIPTION "Damp" :ALTERNATES
+ (#\MUSICAL_SYMBOL_DAMP))
 (:NAME "pluckedDampAll" :CODE 58937 :DESCRIPTION "Damp all" :ALTERNATES
- (119221))
+ (#\MUSICAL_SYMBOL_DAMP_ALL))
 (:NAME "pluckedDampOnStem" :CODE 58939 :DESCRIPTION "Damp for stem" :ALTERNATES
  NIL)
 (:NAME "pluckedFingernailFlick" :CODE 58935 :DESCRIPTION "Fingernail flick"
@@ -4666,20 +4730,20 @@
 (:NAME "pluckedSnapPizzicatoAbove" :CODE 58929 :DESCRIPTION
  "Snap pizzicato above" :ALTERNATES NIL)
 (:NAME "pluckedSnapPizzicatoBelow" :CODE 58928 :DESCRIPTION
- "Snap pizzicato below" :ALTERNATES (119213))
+ "Snap pizzicato below" :ALTERNATES (#\MUSICAL_SYMBOL_COMBINING_SNAP_PIZZICATO))
 (:NAME "pluckedWithFingernails" :CODE 58934 :DESCRIPTION "With fingernails"
- :ALTERNATES (119219))
+ :ALTERNATES (#\MUSICAL_SYMBOL_WITH_FINGERNAILS))
 (:NAME "quindicesima" :CODE 58644 :DESCRIPTION "Quindicesima" :ALTERNATES NIL)
 (:NAME "quindicesimaAlta" :CODE 58645 :DESCRIPTION "Quindicesima alta"
  :ALTERNATES NIL)
 (:NAME "quindicesimaBassa" :CODE 58646 :DESCRIPTION "Quindicesima bassa"
- :ALTERNATES (119097))
+ :ALTERNATES (#\MUSICAL_SYMBOL_QUINDICESIMA_BASSA))
 (:NAME "quindicesimaBassaMb" :CODE 58653 :DESCRIPTION "Quindicesima bassa (mb)"
  :ALTERNATES NIL)
 (:NAME "repeat1Bar" :CODE 58624 :DESCRIPTION "Repeat last bar" :ALTERNATES
- (119054))
+ (#\MUSICAL_SYMBOL_REPEATED_FIGURE-2))
 (:NAME "repeat2Bars" :CODE 58625 :DESCRIPTION "Repeat last two bars"
- :ALTERNATES (119055))
+ :ALTERNATES (#\MUSICAL_SYMBOL_REPEATED_FIGURE-3))
 (:NAME "repeat4Bars" :CODE 58626 :DESCRIPTION "Repeat last four bars"
  :ALTERNATES NIL)
 (:NAME "repeatBarLowerDot" :CODE 58629 :DESCRIPTION "Repeat bar lower dot"
@@ -4689,32 +4753,34 @@
 (:NAME "repeatBarUpperDot" :CODE 58627 :DESCRIPTION "Repeat bar upper dot"
  :ALTERNATES NIL)
 (:NAME "repeatDot" :CODE 57412 :DESCRIPTION "Single repeat dot" :ALTERNATES NIL)
-(:NAME "repeatDots" :CODE 57411 :DESCRIPTION "Repeat dots" :ALTERNATES (119048))
+(:NAME "repeatDots" :CODE 57411 :DESCRIPTION "Repeat dots" :ALTERNATES
+ (#\MUSICAL_SYMBOL_REPEAT_DOTS))
 (:NAME "repeatLeft" :CODE 57408 :DESCRIPTION "Left (start) repeat sign"
- :ALTERNATES (119046))
+ :ALTERNATES (#\MUSICAL_SYMBOL_LEFT_REPEAT_SIGN))
 (:NAME "repeatRight" :CODE 57409 :DESCRIPTION "Right (end) repeat sign"
- :ALTERNATES (119047))
+ :ALTERNATES (#\MUSICAL_SYMBOL_RIGHT_REPEAT_SIGN))
 (:NAME "repeatRightLeft" :CODE 57410 :DESCRIPTION "Right and left repeat sign"
  :ALTERNATES NIL)
 (:NAME "rest1024th" :CODE 58605 :DESCRIPTION "1024th rest" :ALTERNATES NIL)
 (:NAME "rest128th" :CODE 58602 :DESCRIPTION
- "128th (semihemidemisemiquaver) rest" :ALTERNATES (119106))
+ "128th (semihemidemisemiquaver) rest" :ALTERNATES
+ (#\MUSICAL_SYMBOL_ONE_HUNDRED_TWENTY-EIGHTH_REST))
 (:NAME "rest16th" :CODE 58599 :DESCRIPTION "16th (semiquaver) rest" :ALTERNATES
- (119103))
+ (#\MUSICAL_SYMBOL_SIXTEENTH_REST))
 (:NAME "rest256th" :CODE 58603 :DESCRIPTION "256th rest" :ALTERNATES NIL)
 (:NAME "rest32nd" :CODE 58600 :DESCRIPTION "32nd (demisemiquaver) rest"
- :ALTERNATES (119104))
+ :ALTERNATES (#\MUSICAL_SYMBOL_THIRTY-SECOND_REST))
 (:NAME "rest512th" :CODE 58604 :DESCRIPTION "512th rest" :ALTERNATES NIL)
 (:NAME "rest64th" :CODE 58601 :DESCRIPTION "64th (hemidemisemiquaver) rest"
- :ALTERNATES (119105))
+ :ALTERNATES (#\MUSICAL_SYMBOL_SIXTY-FOURTH_REST))
 (:NAME "rest8th" :CODE 58598 :DESCRIPTION "Eighth (quaver) rest" :ALTERNATES
- (119102))
+ (#\MUSICAL_SYMBOL_EIGHTH_REST))
 (:NAME "restDoubleWhole" :CODE 58594 :DESCRIPTION "Double whole (breve) rest"
- :ALTERNATES (119098))
+ :ALTERNATES (#\MUSICAL_SYMBOL_MULTI_REST))
 (:NAME "restDoubleWholeLegerLine" :CODE 58611 :DESCRIPTION
  "Double whole rest on leger lines" :ALTERNATES NIL)
 (:NAME "restHBar" :CODE 58606 :DESCRIPTION "Multiple measure rest" :ALTERNATES
- (119081))
+ (#\MUSICAL_SYMBOL_MULTIPLE_MEASURE_REST))
 (:NAME "restHBarLeft" :CODE 58607 :DESCRIPTION "H-bar, left half" :ALTERNATES
  NIL)
 (:NAME "restHBarMiddle" :CODE 58608 :DESCRIPTION "H-bar, middle" :ALTERNATES
@@ -4722,19 +4788,19 @@
 (:NAME "restHBarRight" :CODE 58609 :DESCRIPTION "H-bar, right half" :ALTERNATES
  NIL)
 (:NAME "restHalf" :CODE 58596 :DESCRIPTION "Half (minim) rest" :ALTERNATES
- (119100))
+ (#\MUSICAL_SYMBOL_HALF_REST))
 (:NAME "restHalfLegerLine" :CODE 58613 :DESCRIPTION "Half rest on leger line"
  :ALTERNATES NIL)
 (:NAME "restLonga" :CODE 58593 :DESCRIPTION "Longa rest" :ALTERNATES NIL)
 (:NAME "restMaxima" :CODE 58592 :DESCRIPTION "Maxima rest" :ALTERNATES NIL)
 (:NAME "restQuarter" :CODE 58597 :DESCRIPTION "Quarter (crotchet) rest"
- :ALTERNATES (119101))
+ :ALTERNATES (#\MUSICAL_SYMBOL_QUARTER_REST))
 (:NAME "restQuarterOld" :CODE 58610 :DESCRIPTION
  "Old-style quarter (crotchet) rest" :ALTERNATES NIL)
 (:NAME "restQuarterZ" :CODE 58614 :DESCRIPTION
  "Z-style quarter (crotchet) rest" :ALTERNATES NIL)
 (:NAME "restWhole" :CODE 58595 :DESCRIPTION "Whole (semibreve) rest"
- :ALTERNATES (119099))
+ :ALTERNATES (#\MUSICAL_SYMBOL_WHOLE_REST))
 (:NAME "restWholeLegerLine" :CODE 58612 :DESCRIPTION "Whole rest on leger line"
  :ALTERNATES NIL)
 (:NAME "reversedBrace" :CODE 57345 :DESCRIPTION "Reversed brace" :ALTERNATES
@@ -4761,7 +4827,8 @@
  "Schäffer G clef to F clef change" :ALTERNATES NIL)
 (:NAME "schaefferPreviousClef" :CODE 57456 :DESCRIPTION
  "Schäffer previous clef" :ALTERNATES NIL)
-(:NAME "segno" :CODE 57415 :DESCRIPTION "Segno" :ALTERNATES (119051))
+(:NAME "segno" :CODE 57415 :DESCRIPTION "Segno" :ALTERNATES
+ (#\MUSICAL_SYMBOL_SEGNO))
 (:NAME "segnoSerpent1" :CODE 57418 :DESCRIPTION "Segno (serpent)" :ALTERNATES
  NIL)
 (:NAME "segnoSerpent2" :CODE 57419 :DESCRIPTION
@@ -4791,37 +4858,37 @@
 (:NAME "splitBarDivider" :CODE 57354 :DESCRIPTION
  "Split bar divider (bar spans a system break)" :ALTERNATES NIL)
 (:NAME "staff1Line" :CODE 57360 :DESCRIPTION "1-line staff" :ALTERNATES
- (119062))
+ (#\MUSICAL_SYMBOL_ONE-LINE_STAFF))
 (:NAME "staff1LineNarrow" :CODE 57372 :DESCRIPTION "1-line staff (narrow)"
  :ALTERNATES NIL)
 (:NAME "staff1LineWide" :CODE 57366 :DESCRIPTION "1-line staff (wide)"
  :ALTERNATES NIL)
 (:NAME "staff2Lines" :CODE 57361 :DESCRIPTION "2-line staff" :ALTERNATES
- (119063))
+ (#\MUSICAL_SYMBOL_TWO-LINE_STAFF))
 (:NAME "staff2LinesNarrow" :CODE 57373 :DESCRIPTION "2-line staff (narrow)"
  :ALTERNATES NIL)
 (:NAME "staff2LinesWide" :CODE 57367 :DESCRIPTION "2-line staff (wide)"
  :ALTERNATES NIL)
 (:NAME "staff3Lines" :CODE 57362 :DESCRIPTION "3-line staff" :ALTERNATES
- (119064))
+ (#\MUSICAL_SYMBOL_THREE-LINE_STAFF))
 (:NAME "staff3LinesNarrow" :CODE 57374 :DESCRIPTION "3-line staff (narrow)"
  :ALTERNATES NIL)
 (:NAME "staff3LinesWide" :CODE 57368 :DESCRIPTION "3-line staff (wide)"
  :ALTERNATES NIL)
 (:NAME "staff4Lines" :CODE 57363 :DESCRIPTION "4-line staff" :ALTERNATES
- (119065))
+ (#\MUSICAL_SYMBOL_FOUR-LINE_STAFF))
 (:NAME "staff4LinesNarrow" :CODE 57375 :DESCRIPTION "4-line staff (narrow)"
  :ALTERNATES NIL)
 (:NAME "staff4LinesWide" :CODE 57369 :DESCRIPTION "4-line staff (wide)"
  :ALTERNATES NIL)
 (:NAME "staff5Lines" :CODE 57364 :DESCRIPTION "5-line staff" :ALTERNATES
- (119066))
+ (#\MUSICAL_SYMBOL_FIVE-LINE_STAFF))
 (:NAME "staff5LinesNarrow" :CODE 57376 :DESCRIPTION "5-line staff (narrow)"
  :ALTERNATES NIL)
 (:NAME "staff5LinesWide" :CODE 57370 :DESCRIPTION "5-line staff (wide)"
  :ALTERNATES NIL)
 (:NAME "staff6Lines" :CODE 57365 :DESCRIPTION "6-line staff" :ALTERNATES
- (119067))
+ (#\MUSICAL_SYMBOL_SIX-LINE_STAFF))
 (:NAME "staff6LinesNarrow" :CODE 57377 :DESCRIPTION "6-line staff (narrow)"
  :ALTERNATES NIL)
 (:NAME "staff6LinesWide" :CODE 57371 :DESCRIPTION "6-line staff (wide)"
@@ -4864,7 +4931,8 @@
  :ALTERNATES NIL)
 (:NAME "staffPosRaise8" :CODE 60311 :DESCRIPTION "Raise 8 staff positions"
  :ALTERNATES NIL)
-(:NAME "stem" :CODE 57872 :DESCRIPTION "Combining stem" :ALTERNATES (119141))
+(:NAME "stem" :CODE 57872 :DESCRIPTION "Combining stem" :ALTERNATES
+ (#\MUSICAL_SYMBOL_COMBINING_STEM))
 (:NAME "stemBowOnBridge" :CODE 57877 :DESCRIPTION
  "Combining bow on bridge stem" :ALTERNATES NIL)
 (:NAME "stemBowOnTailpiece" :CODE 57878 :DESCRIPTION
@@ -4886,7 +4954,8 @@
 (:NAME "stemRimShot" :CODE 57886 :DESCRIPTION "Combining rim shot stem"
  :ALTERNATES NIL)
 (:NAME "stemSprechgesang" :CODE 57873 :DESCRIPTION
- "Combining sprechgesang stem" :ALTERNATES (119142))
+ "Combining sprechgesang stem" :ALTERNATES
+ (#\MUSICAL_SYMBOL_COMBINING_SPRECHGESANG_STEM))
 (:NAME "stemSulPonticello" :CODE 57876 :DESCRIPTION
  "Combining sul ponticello (bow behind bridge) stem" :ALTERNATES NIL)
 (:NAME "stemSussurando" :CODE 57885 :DESCRIPTION "Combining sussurando stem"
@@ -4914,7 +4983,7 @@
 (:NAME "stringsChangeBowDirection" :CODE 58918 :DESCRIPTION
  "Change bow direction, indeterminate" :ALTERNATES NIL)
 (:NAME "stringsDownBow" :CODE 58896 :DESCRIPTION "Down bow" :ALTERNATES
- (119210))
+ (#\MUSICAL_SYMBOL_COMBINING_DOWN_BOW))
 (:NAME "stringsDownBowAwayFromBody" :CODE 61058 :DESCRIPTION
  "Down bow, away from body" :ALTERNATES NIL)
 (:NAME "stringsDownBowBeyondBridge" :CODE 61060 :DESCRIPTION
@@ -4927,7 +4996,7 @@
 (:NAME "stringsHalfHarmonic" :CODE 58901 :DESCRIPTION "Half-harmonic"
  :ALTERNATES NIL)
 (:NAME "stringsHarmonic" :CODE 58900 :DESCRIPTION "Harmonic" :ALTERNATES
- (119212))
+ (#\MUSICAL_SYMBOL_COMBINING_HARMONIC))
 (:NAME "stringsJeteAbove" :CODE 58912 :DESCRIPTION "Jeté (gettato) above"
  :ALTERNATES NIL)
 (:NAME "stringsJeteBelow" :CODE 58913 :DESCRIPTION "Jeté (gettato) below"
@@ -4960,7 +5029,8 @@
  :ALTERNATES NIL)
 (:NAME "stringsTripleChopOutward" :CODE 61067 :DESCRIPTION
  "Triple chop, outward" :ALTERNATES NIL)
-(:NAME "stringsUpBow" :CODE 58898 :DESCRIPTION "Up bow" :ALTERNATES (119211))
+(:NAME "stringsUpBow" :CODE 58898 :DESCRIPTION "Up bow" :ALTERNATES
+ (#\MUSICAL_SYMBOL_COMBINING_UP_BOW))
 (:NAME "stringsUpBowAwayFromBody" :CODE 61059 :DESCRIPTION
  "Up bow, away from body" :ALTERNATES NIL)
 (:NAME "stringsUpBowBeyondBridge" :CODE 61061 :DESCRIPTION
@@ -5103,7 +5173,7 @@
 (:NAME "timeSigComma" :CODE 57494 :DESCRIPTION "Time signature comma"
  :ALTERNATES NIL)
 (:NAME "timeSigCommon" :CODE 57482 :DESCRIPTION "Common time" :ALTERNATES
- (119092))
+ (#\MUSICAL_SYMBOL_COMMON_TIME))
 (:NAME "timeSigCommonReversed" :CODE 60666 :DESCRIPTION "Reversed common time"
  :ALTERNATES NIL)
 (:NAME "timeSigCommonTurned" :CODE 60650 :DESCRIPTION "Turned common time"
@@ -5112,7 +5182,7 @@
 (:NAME "timeSigCut3" :CODE 60550 :DESCRIPTION "Cut triple time (9/8)"
  :ALTERNATES NIL)
 (:NAME "timeSigCutCommon" :CODE 57483 :DESCRIPTION "Cut time" :ALTERNATES
- (119093))
+ (#\MUSICAL_SYMBOL_CUT_TIME))
 (:NAME "timeSigCutCommonReversed" :CODE 60667 :DESCRIPTION "Reversed cut time"
  :ALTERNATES NIL)
 (:NAME "timeSigCutCommonTurned" :CODE 60651 :DESCRIPTION "Turned cut time"
@@ -5154,11 +5224,11 @@
 (:NAME "timeSigX" :CODE 57500 :DESCRIPTION "Open time signature" :ALTERNATES
  NIL)
 (:NAME "tremolo1" :CODE 57888 :DESCRIPTION "Combining tremolo 1" :ALTERNATES
- (119143))
+ (#\MUSICAL_SYMBOL_COMBINING_TREMOLO-1))
 (:NAME "tremolo2" :CODE 57889 :DESCRIPTION "Combining tremolo 2" :ALTERNATES
- (119144))
+ (#\MUSICAL_SYMBOL_COMBINING_TREMOLO-2))
 (:NAME "tremolo3" :CODE 57890 :DESCRIPTION "Combining tremolo 3" :ALTERNATES
- (119145))
+ (#\MUSICAL_SYMBOL_COMBINING_TREMOLO-3))
 (:NAME "tremolo4" :CODE 57891 :DESCRIPTION "Combining tremolo 4" :ALTERNATES
  NIL)
 (:NAME "tremolo5" :CODE 57892 :DESCRIPTION "Combining tremolo 5" :ALTERNATES
@@ -5172,17 +5242,17 @@
 (:NAME "tremoloDivisiDots6" :CODE 57905 :DESCRIPTION
  "Divide measured tremolo by 6" :ALTERNATES NIL)
 (:NAME "tremoloFingered1" :CODE 57893 :DESCRIPTION "Fingered tremolo 1"
- :ALTERNATES (119146))
+ :ALTERNATES (#\MUSICAL_SYMBOL_FINGERED_TREMOLO-1))
 (:NAME "tremoloFingered2" :CODE 57894 :DESCRIPTION "Fingered tremolo 2"
- :ALTERNATES (119147))
+ :ALTERNATES (#\MUSICAL_SYMBOL_FINGERED_TREMOLO-2))
 (:NAME "tremoloFingered3" :CODE 57895 :DESCRIPTION "Fingered tremolo 3"
- :ALTERNATES (119148))
+ :ALTERNATES (#\MUSICAL_SYMBOL_FINGERED_TREMOLO-3))
 (:NAME "tremoloFingered4" :CODE 57896 :DESCRIPTION "Fingered tremolo 4"
  :ALTERNATES NIL)
 (:NAME "tremoloFingered5" :CODE 57897 :DESCRIPTION "Fingered tremolo 5"
  :ALTERNATES NIL)
 (:NAME "tripleTongueAbove" :CODE 58866 :DESCRIPTION "Triple-tongue above"
- :ALTERNATES (119179))
+ :ALTERNATES (#\MUSICAL_SYMBOL_COMBINING_TRIPLE_TONGUE))
 (:NAME "tripleTongueBelow" :CODE 58867 :DESCRIPTION "Triple-tongue below"
  :ALTERNATES NIL)
 (:NAME "tuplet0" :CODE 59520 :DESCRIPTION "Tuplet 0" :ALTERNATES NIL)
@@ -5201,9 +5271,9 @@
 (:NAME "unmeasuredTremoloSimple" :CODE 57901 :DESCRIPTION
  "Wieniawski unmeasured tremolo (simpler)" :ALTERNATES NIL)
 (:NAME "unpitchedPercussionClef1" :CODE 57449 :DESCRIPTION
- "Unpitched percussion clef 1" :ALTERNATES (119077))
+ "Unpitched percussion clef 1" :ALTERNATES (#\MUSICAL_SYMBOL_DRUM_CLEF-1))
 (:NAME "unpitchedPercussionClef2" :CODE 57450 :DESCRIPTION
- "Unpitched percussion clef 2" :ALTERNATES (119078))
+ "Unpitched percussion clef 2" :ALTERNATES (#\MUSICAL_SYMBOL_DRUM_CLEF-2))
 (:NAME "ventiduesima" :CODE 58647 :DESCRIPTION "Ventiduesima" :ALTERNATES NIL)
 (:NAME "ventiduesimaAlta" :CODE 58648 :DESCRIPTION "Ventiduesima alta"
  :ALTERNATES NIL)
