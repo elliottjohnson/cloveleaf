@@ -30,7 +30,10 @@
 	   #:glyph-ligature-component-glyphs
 	   #:glyphp
 	   #:+cloveleaf-glyphnames-filename+
+	   #:+cloveleaf-classes-filename+
+	   #:+cloveleaf-ranges-filename+
 	   #:*cloveleaf-source-directory-pathname*
+	   #:read-glyphnames
 	   #:code-codepoint
 	   #:classes
 	   #:classes-name
@@ -155,7 +158,7 @@
   ((component-glyphs :accessor glyph-ligature-component-glyths
 		     :documentation "A list of glyphs that make up a ligature for this graph."
 		     :initarg :ligature))
-  (:documentation "A class for all ligature classes"))
+  (:documentation "A class for all ligature glyphs."))
 
 (defun glyphp (thing &optional environment)
   "Returns true if THING is a glyph."
@@ -167,7 +170,13 @@
 
 (defparameter +cloveleaf-glyphnames-filename+
   "glyphnames.lisp"
-  "The filename for the cloveleaf glyphname definitions.")
+  "The filename for the cloveleaf SMuFL glyphname definitions.")
+(defparameter +cloveleaf-classes-filename+
+  "classes.lisp"
+  "The filename for the cloveleaf SMuFL classes definitions.")
+(defparameter +cloveleaf-ranges-filename+
+  "ranges.lisp"
+  "The filename for the cloveleaf SMuFL ranges definitions.")
 (defvar *cloveleaf-source-directory-pathname*
   (car (directory
 	(asdf:system-relative-pathname (asdf:find-system :cloveleaf) "src")))
@@ -195,28 +204,10 @@ glyph names in FILENAME."
 				    :code-point (code-codepoint code))))))
   hash)
 
-(defun map-alternates (hash)
-  "Loops over the elements in hash and maps alternates codes to a list of
-characters.  It would be nice to map to alternate glyphs, but some of the
-alternates are not SMuFL characters."
-  (assert (hash-table-p hash))
-  (loop for glyph being the hash-value in hash
-	do (with-accessors ((alts glyph-alternates))
-	       glyph
-	     (when alts
-	       (setf alts
-		     (mapcar #'(lambda (x)
-				 (cond ((characterp x) x)
-				       ((integerp x) (code-char x))
-				       (t (error "Unknown alternate glyph: ~A"
-						 x))))
-			     alts))))))
-
 (defun code-codepoint (code)
   "Converts a character code to a SMuFL code-point string."
   (assert (integerp code))
   (format nil "U+~4,'0X" code))
-
 
 ;;;
 ;;; classes
@@ -234,6 +225,28 @@ alternates are not SMuFL characters."
 	   :initform ()))
   (:documentation "SMuFL classes are groups of glyphs."))
 
+(defun read-classes (&key (filename (merge-pathnames
+				     +cloveleaf-classes-filename+
+				     *cloveleaf-source-directory-pathname*))
+		       glyph-hash
+		       (hash (make-hash-table :test 'equal)))
+  "Returns a populated HASH of classes hashed on CLASSES-NAME."
+  (assert (hash-table-p glyph-hash))
+  (assert (hash-table-p hash))
+  (with-open-file (file filename)
+    (loop for classes-def = (read file nil nil)
+	  while classes-def
+	  do (progn
+	       (format t "~%~S" classes-def)
+	       (let ((name (getf classes-def :name))
+		   (glyphs (getf classes-def :glyphs)))
+	       (setf (gethash name hash)
+		     (make-instance 'classes
+				    :glyphs (mapcar #'(lambda (g)
+							(gethash g glyph-hash))
+						    glyphs)
+				    :name name))))))
+  hash)
 
 ;;;
 ;;; Ranges

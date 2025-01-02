@@ -12,9 +12,29 @@
 (defparameter +smufl-metadata-classes-filename+
   "classes.json"
   "The filename of the SMuFL classes.json file to read in.")
-(defparameter +smufl-metadata-classes-ranges.json+
+(defparameter +smufl-metadata-ranges-filename+
   "ranges.json"
   "The filename of the SMuFL ranges.json file to read in.")
+
+(defun generate-smufl-metadata-files (&key (source-directory *smufl-metadata-directory-pathname*)
+					(glyphnames-json +smufl-metadata-glyphnames-filename+)
+					(classes-json +smufl-metadata-classes-filename+)
+					(ranges-json +smufl-metadata-ranges-filename+)
+					(glyphnames-lisp +cloveleaf-glyphnames-filename+)
+					(classes-lisp +cloveleaf-classes-filename+)
+					(ranges-lisp +cloveleaf-ranges-filename+)
+					(destination-directory *cloveleaf-source-directory-pathname*))
+  "Reads in the SMuFL Specification Metadata and re-writes as a set of lisp objects."
+  (generate-glyphnames :srcdir source-directory
+		       :filename glyphnames-json
+		       :outfile glyphnames-lisp
+		       :outdir destination-directory)
+  (let ((glyphs (read-glyphnames (merge-pathnames glyphnames-lisp destination-directory))))
+    (generate-classes :srcdir source-directory
+		      :filename classes-json
+		      :outfile classes-lisp
+		      :outdir destination-directory
+		      :glyphs glyphs)))
 
 ;;; We want to read in the SMuFL distributed files and emit lisp forms
 ;;; that will be used for our purposes.  First we look at emitting
@@ -35,7 +55,7 @@
       (write `(:name ,name
 	       :code ,code
 	       :description ,description
-	       :alternates ,(glyph-list-to-codes alternates))
+	       :alternates ,(glyph-list-to-characters alternates))
 	     :stream stream)))
   (:method ((object classes) (stream stream))
     (with-accessors ((name classes-name)
@@ -43,7 +63,7 @@
 	object
       (fresh-line stream)
       (write `(:name ,name
-	       :glyphs ,(glyph-list-to-codes glyphs))
+	       :glyphs ,(glyph-list-to-characters glyphs))
 	     :stream stream)))
   (:method ((object ranges) (stream stream))
     (with-accessors ((name ranges-name)
@@ -55,19 +75,23 @@
       (fresh-line stream)
       (write `(:name ,name
 	       :description ,description
-	       :end end
-	       :start start
-	       :glyphs ,(glyph-list-to-codes glyphs))
+	       :end ,end
+	       :start ,start
+	       :glyphs ,(glyph-list-to-characters glyphs))
 	     :stream stream))))
 
-(defun generate-glyphnames (&key (pathname *smufl-metadata-directory-pathname*)
-			   (filename +smufl-metadata-glyphnames-filename+)
-			   (outfile +cloveleaf-glyphnames-filename+)
-			   (outdir *cloveleaf-source-directory-pathname*))
-  "Does the actual work of parsing the JSON file into glyphs and writting them to file."
-  (let ((output-file  (merge-pathnames outfile outdir)))
-    (with-parser (parser (merge-pathnames filename pathname))
-      (parse-next parser)		    ; pop off the first :begin-object.
+;;;
+;;; SMuFL glyphnames.json
+;;;
+
+(defun generate-glyphnames (&key (srcdir *smufl-metadata-directory-pathname*)
+			      (filename +smufl-metadata-glyphnames-filename+)
+			      (outfile +cloveleaf-glyphnames-filename+)
+			      (outdir *cloveleaf-source-directory-pathname*))
+  "Does the actual work of parsing the JSON file into glyphs and writting them as lisp readable data to file."
+  (let ((output-file (merge-pathnames outfile outdir)))
+    (with-parser (parser (merge-pathnames filename srcdir))
+      (parse-next parser)	    ; pop off the first :begin-object.
       (with-open-file (file output-file
 			    :direction :output
 			    :if-does-not-exist :create)
@@ -78,14 +102,14 @@
 	(fresh-line file)
 	output-file))))
 
-(defun glyph-list-to-codes (list)
-  "Converts a LIST of GLYPHs to a list of codes.  If already a code list, return it."
-  (assert (listp list))
-  (assert (or (every #'glyphp list)
-	      (every #'numberp list)))
-  (if (every #'numberp list)
-      list
-      (mapcar #'(lambda (g)(glyph-code g)) list)))
+(defun glyph-list-to-characters (glyph-list)
+  "Converts a LIST of GLYPHs to a list of characters.  Accepts lists of glyphs, unicode integer codes, or characters."
+  (assert (listp glyph-list))
+  (loop for glyph in glyph-list
+	collect (cond ((numberp glyph) (code-char glyph))
+		      ((glyphp glyph) (glyph-character glyph))
+		      ((characterp glyph) glyph)
+		      (t (error "Unknown glyph reference type: ~S" glyph)))))
 
 (defun print-header (stream)
   "Prints a header for auto generated files."
@@ -147,3 +171,67 @@
   "Converts hexidecimal string codepoints into integers."
   (assert (stringp code-point))
   (parse-integer (string-left-trim "U+" code-point) :radix 16))
+
+;;;
+;;; SMuFL classes.json
+;;;
+
+(defun generate-classes (&key (srcdir *smufl-metadata-directory-pathname*)
+			   (filename +smufl-metadata-classes-filename+)
+			   (outfile +cloveleaf-classes-filename+)
+			   (outdir *cloveleaf-source-directory-pathname*)
+			   glyph-table)
+  "Does the actual work of parsing the JSON file into classes and writing them as lisp readable data to file."
+  (assert (hash-table-p glyph-table))
+  (let ((output-file (merge-pathnames outfile outdir)))
+    (with-parser (parser (merge-pathnames filename srcdir))
+      (parse-next parser)	     ; pop off the first :begin-object
+      (with-open-file (file output-file
+			    :direction :output
+			    :if-does-not-exist :create)
+	(print-header file)
+	(loop for classes = (parse-classes parser glyph-table)
+	      while classes
+	      do (emit classes file))
+	(fresh-line file)
+	output-file))))
+
+(defun parse-classes (parser glyph-table)
+  "Parses the JSON for an individual SMuFL class definition and returns either a CLASSES object or NIL."
+  (assert (typep parser 'parser))
+  (assert (hash-table-p glyph-table))
+  (multiple-value-bind (key classname)
+      (parse-next parser)
+    (unless (or (eq :end-object key)
+		(null key)
+		(null classname))
+      (unless (and (eq key :object-key)
+		   (stringp classname))
+	(error "Parsing class name: ~S and ~S" key classname))
+      (let ((classes (make-instance 'classes :name classname)))
+	(parse-classes-body parser classes glyph-table)
+	classes))))
+
+(defun parse-classes-body (parser classes glyph-table)
+  (assert (typep parser 'parser))
+  (assert (typep classes 'classes))
+  (assert (hash-table-p glyph-table))
+  (unless (eq :begin-array (parse-next parser))
+    (error "Failed to find expected classes array!"))
+  (with-accessors ((glyphs classes-glyphs))
+      classes
+    (loop for (key value) = (multiple-value-list (parse-next parser))
+	  while (not (eq :end-array key))
+	  do (if (and (eq :value key)
+		      (stringp value))
+		 (push (find-glyph-by-name glyph-table value :error-p t)
+		       glyphs)))))
+
+(defun find-glyph-by-name (glyph-table name &key error-p)
+  "Loops over all glyphs in GLYPH-TABLE and returns a matching glyph."
+  (let ((glyph (loop for g being the hash-value in glyph-table
+		     when (string= (glyph-name g) name)
+		     return g)))
+    (if (and (not glyph) error-p)
+	(error "Unable to locate glyph: ~S in hash-table: ~S" name glyph-table)
+	glyph)))
