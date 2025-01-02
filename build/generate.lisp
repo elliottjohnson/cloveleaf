@@ -1,5 +1,6 @@
 (uiop:define-package cloveleaf/smufl
-  (:use #:cl #:com.inuoe.jzon #:cloveleaf))
+  (:use #:cl #:com.inuoe.jzon #:cloveleaf)
+  (:export #:generate-smufl-metadata-files))
 (in-package #:cloveleaf/smufl)
 
 (defvar *smufl-metadata-directory-pathname*
@@ -24,17 +25,23 @@
 					(classes-lisp +cloveleaf-classes-filename+)
 					(ranges-lisp +cloveleaf-ranges-filename+)
 					(destination-directory *cloveleaf-source-directory-pathname*))
-  "Reads in the SMuFL Specification Metadata and re-writes as a set of lisp objects."
+  "Reads in the SMuFL Specification Metadata and re-writes as a set of lisp objects for the main cloveleaf library to use."
   (generate-glyphnames :srcdir source-directory
 		       :filename glyphnames-json
 		       :outfile glyphnames-lisp
 		       :outdir destination-directory)
-  (let ((glyphs (read-glyphnames (merge-pathnames glyphnames-lisp destination-directory))))
+  (let ((glyphs (read-glyphnames :filename (merge-pathnames glyphnames-lisp
+							    destination-directory))))
     (generate-classes :srcdir source-directory
 		      :filename classes-json
 		      :outfile classes-lisp
 		      :outdir destination-directory
-		      :glyphs glyphs)))
+		      :glyph-table glyphs)
+    (generate-ranges :srcdir source-directory
+		     :filename ranges-json
+		     :outfile ranges-lisp
+		     :outdir destination-directory
+		     :glyph-table glyphs)))
 
 ;;; We want to read in the SMuFL distributed files and emit lisp forms
 ;;; that will be used for our purposes.  First we look at emitting
@@ -75,8 +82,8 @@
       (fresh-line stream)
       (write `(:name ,name
 	       :description ,description
-	       :end ,end
-	       :start ,start
+	       :end ,(codepoint-code end)
+	       :start ,(codepoint-code start)
 	       :glyphs ,(glyph-list-to-characters glyphs))
 	     :stream stream))))
 
