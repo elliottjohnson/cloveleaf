@@ -99,8 +99,8 @@
 	(loop for glyph = (parse-glyph parser)
 	      while glyph
 	      do (emit glyph file))
-	(fresh-line file)
-	output-file))))
+	(fresh-line file)))
+    output-file))
 
 (defun glyph-list-to-characters (glyph-list)
   "Converts a LIST of GLYPHs to a list of characters.  Accepts lists of glyphs, unicode integer codes, or characters."
@@ -130,6 +130,22 @@
 	(parse-glyph-body parser glyph)
 	glyph))))
 
+(defun %object-keyp (key value keystring)
+  "Matches a value to a keystring."
+  (and (eq :object-key key)
+       (stringp value)
+       (string= value keystring)))
+
+(defun %string-valuep (key value)
+  "Returns true if key equals :VALUE and the value is a string."
+  (and (eq :value key) (stringp value)))
+
+(defmacro json-key-value-match ((parser key-sym value-sym) &rest form)
+  `(multiple-value-bind (,key-sym ,value-sym)
+       (parse-next ,parser)
+     (when (%string-valuep ,key-sym ,value-sym)
+       ,@form)))
+
 (defun parse-glyph-body (parser glyph)
   "Parses the body of a GLYPH from JSON"
   (assert (typep parser 'parser))
@@ -140,32 +156,18 @@
 		   (description glyph-description)
 		   (alternates glyph-alternates))
       glyph
-    (flet ((object-keyp (key value keystring)
-	     (and (eq :object-key key)
-		  (stringp value)
-		  (string= value keystring)))
-	   (string-valuep (key value)
-	     (and (eq :value key) (stringp value))))
-      (loop for (key value) = (multiple-value-list (parse-next parser))
-	    while (not (eq :end-object key))
-	    do (cond ((object-keyp key value "codepoint")
-		      (multiple-value-bind (key2 value2)
-			  (parse-next parser)
-			(when (string-valuep key2 value2)
-			  (setf code (codepoint-code value2)))))
-		     ((object-keyp key value "description")
-		      (multiple-value-bind (key2 value2)
-			  (parse-next parser)
-			(when (string-valuep key2 value2)
-			  (setf description value2))))
-		     ((object-keyp key value "alternateCodepoint")
-		      (multiple-value-bind (key2 value2)
-			  (parse-next parser)
-			(when (string-valuep key2 value2)
-			  (setf alternates (list (codepoint-code value2))))))
-		     (t (error "Unknown key '~S' and value '~S' in parsing glyph body."
-			       key
-			       value)))))))
+    (loop for (key value) = (multiple-value-list (parse-next parser))
+	  while (not (eq :end-object key))
+	  do (cond ((%object-keyp key value "codepoint")
+		    (json-key-value-match (parser k v) (setf code (codepoint-code v))))
+		   ((%object-keyp key value "description")
+		    (json-key-value-match (parser k v) (setf description v)))
+		   ((%object-keyp key value "alternateCodepoint")
+		    (json-key-value-match (parser k v)
+					  (setf alternates (list (codepoint-code v)))))
+		   (t (error "Unknown key '~S' and value '~S' in parsing glyph body."
+			     key
+			     value))))))
 
 (defun codepoint-code (code-point)
   "Converts hexidecimal string codepoints into integers."
@@ -225,7 +227,8 @@
 	  do (if (and (eq :value key)
 		      (stringp value))
 		 (push (find-glyph-by-name glyph-table value :error-p t)
-		       glyphs)))))
+		       glyphs)
+		 (error "Failed to find classes glyph array element!")))))
 
 (defun find-glyph-by-name (glyph-table name &key error-p)
   "Loops over all glyphs in GLYPH-TABLE and returns a matching glyph."
@@ -235,3 +238,85 @@
     (if (and (not glyph) error-p)
 	(error "Unable to locate glyph: ~S in hash-table: ~S" name glyph-table)
 	glyph)))
+
+;;;
+;;; SMuFL ranges.json
+;;;
+
+(defun generate-ranges (&key (srcdir *smufl-metadata-directory-pathname*)
+			  (filename +smufl-metadata-ranges-filename+)
+			  (outfile +cloveleaf-ranges-filename+)
+			  (outdir *cloveleaf-source-directory-pathname*)
+			  glyph-table)
+  "Does the actual work of parsing the JSON file into ranges and writting them as lisp readable data to file."
+  (assert (hash-table-p glyph-table))
+  (let ((output-file (merge-pathnames outfile outdir)))
+    (with-parser (parser (merge-pathnames filename srcdir))
+      (parse-next parser)	     ; pop off the first :begin-object
+      (with-open-file (file output-file
+			    :direction :output
+			    :if-does-not-exist :create)
+	(print-header file)
+	(loop for range = (parse-range parser glyph-table)
+	      while range
+	      do (emit range file))
+	(fresh-line file)))
+    output-file))
+
+(defun parse-range (parser glyph-table)
+  "Parses the JSON for an individual SMuFL range definition and returns either a RANGES object or NIL."
+  (assert (typep parser 'parser))
+  (assert (hash-table-p glyph-table))
+  (multiple-value-bind (key rangename)
+      (parse-next parser)
+    (unless (or (eq :end-object key)
+		(null key)
+		(null rangename))
+      (unless (and (eq key :object-key)
+		   (stringp rangename))
+	(error "Parsing range name: ~S and ~S" key rangename))
+      (let ((ranges (make-instance 'ranges :name rangename)))
+	(parse-ranges-body parser ranges glyph-table)
+	ranges))))
+
+(defun parse-ranges-body (parser ranges glyph-table)
+  "Parses the body of a RANGES object from JSON."
+  (assert (typep parser 'parser))
+  (assert (typep ranges 'ranges))
+  (assert (hash-table-p glyph-table))
+  (unless (eq :begin-object (parse-next parser))
+    (error "Failed to find expected ranges object!"))
+  (with-accessors ((description ranges-description)
+		   (start ranges-start)
+		   (end ranges-end))
+      ranges
+    (loop for (key value) = (multiple-value-list (parse-next parser))
+	  while (not (eq :end-object key))
+	  do (cond ((%object-keyp key value "description")
+		    (json-key-value-match (parser k v) (setf description v)))
+		   ((%object-keyp key value "glyphs")
+		    (parse-ranges-glyphs parser ranges glyph-table))
+		   ((%object-keyp key value "range_start")
+		    (json-key-value-match (parser k v) (setf start v)))
+		   ((%object-keyp key value "range_end")
+		    (json-key-value-match (parser k v) (setf end v)))
+		   (t (error "Unknown key '~S' and value '~S' in parsing ranges body!"
+			     key
+			     value))))))
+
+(defun parse-ranges-glyphs (parser ranges glyph-table)
+  "Parses a list of glyphs associated with a range."
+  (assert (typep parser 'parser))
+  (assert (typep ranges 'ranges))
+  (assert (hash-table-p glyph-table))
+  (unless (eq :begin-array (parse-next parser))
+    (error "Failed to find expected glyph array for SMuFL range!"))
+  (with-accessors ((glyphs ranges-glyphs))
+      ranges
+    (loop for (key value) = (multiple-value-list (parse-next parser))
+	  while (not (eq :end-array key))
+	  do (if (and (eq :value key)
+		      (stringp value))
+		 (push (find-glyph-by-name glyph-table value :error-p t)
+		       glyphs)
+		 (error "Failed to find ranges glyph array element!")))))
