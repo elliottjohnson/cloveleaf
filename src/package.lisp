@@ -29,6 +29,7 @@
 	   #:ligature-glyph
 	   #:glyph-ligature-component-glyphs
 	   #:glyphp
+	   #:load-glyphs
 	   #:+cloveleaf-glyphnames-filename+
 	   #:+cloveleaf-classes-filename+
 	   #:+cloveleaf-ranges-filename+
@@ -43,4 +44,5 @@
 	   #:ranges-description
 	   #:ranges-end
 	   #:ranges-start
-	   #:ranges-glyphs))
+	   #:ranges-glyphs
+	   #:read-smufl-data))
