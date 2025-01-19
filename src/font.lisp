@@ -67,6 +67,7 @@
       (loop for slot in '(name
 			  version
 			  glyph-hash
+			  name-hash
 			  engraving-defaults
 			  design-size
 			  size-range
@@ -74,7 +75,10 @@
 			  ranges
 			  sets)
 	    do (font-slot-makunbound slot))
-      (when total (font-slot-makunbound 'pathname))))
+      (when total (font-slot-makunbound 'pathname))
+      ;; Setup the font to be used again
+      (setf (font-glyph-hash font) (make-hash-table :test #'eq)
+	    (font-name-hash font) (make-hash-table :test #'equal))))
   (:method :around ((font metadata-font) &key total)
     (when total (slot-makunbound font 'metadata))
     (call-next-method))
@@ -83,26 +87,28 @@
 If TOTAL is true, then the entire font-object is cleared, including
 slots, which maybe required to locate the font definition."))
 
-(defgeneric load-font (font &key clear)
+(defgeneric load-font (font &key clear &allow-other-keys)
   (:method :before ((font font) &key clear)
     (when clear (clear-font font)))
-  (:method ((font metadata-font) &key clear)
+  (:method ((font metadata-font) &key clear &allow-other-keys)
     (declare (ignore clear))
     (assert (pathnamep (font-metadata font)))
     (let ((metadata (parse (font-metadata font))))
-      (read-smufl-data :hash metadata)
+      (read-smufl-data :hash metadata) ; pass in more keys here?
       (parse-font font :data metadata)
-      (load-glyphs font metadata)
-      (assign-alternate-glyphs font metadata)
-      (assign-ligature-glyphs font metadata)
-      (assign-optional-glyphs font metadata)
-      (assign-glyph-sets font metadata)
-      (set-glyph-advanced-widths font metadata)
-      (set-glyph-anchors font metadata)
-      (set-alternates font metadata)
-      (set-bounding-boxes font metadata)
-      (associate-classes font metadata)
-      (associate-ranges font metadata)))
+      (load-glyphs font :data metadata)
+      ;; The following functions are works in progress.
+      ;(assign-alternate-glyphs font metadata)
+      ;(assign-ligature-glyphs font metadata)
+      ;(assign-optional-glyphs font metadata)
+      ;(assign-glyph-sets font metadata)
+      ;(set-glyph-advanced-widths font metadata)
+      ;(set-glyph-anchors font metadata)
+      ;(set-alternates font metadata)
+      ;(set-bounding-boxes font metadata)
+      ;(associate-classes font metadata)
+      ;(associate-ranges font metadata)
+      ))
   (:documentation
    "A generic function for loading fonts and the various tasks associated."))  
 
@@ -121,7 +127,8 @@ slots, which maybe required to locate the font definition."))
 	      engraving-defaults (datahash "engravingDefaults")
 	      design-size (datahash "designSize")
 	      size-range (datahash "sizeRange"))))
-    ;; Todo, there can be optional key/value pairs here... capture these somehow?
+    ;; Todo, there can be optional font attributes here... in the future capture these?
+    ;;   I'm going to wait to see examples of these before I go implementing anything.
     font)
   (:documentation
    "Populates data about the font.  DATA can be provided if the font itself does
@@ -132,8 +139,9 @@ Aside from setting slots in the FONT object, the FONT is returned as a value."))
   (:documentation
    "A backend dependent method for loading glyphs from a font file."))
 
-(defgeneric add-font-glyph (font glyph &optional error-p)
-  (:method ((font font) (glyph glyph) &optional (error-p t))
+(defgeneric add-font-glyph (font data glyph &optional error-p)
+  (:method ((font font) (data hash-table) (glyph glyph) &optional error-p)
+    (copy-smufl-glyph-metadata data glyph)
     (with-accessors ((glyph-hash font-glyph-hash)
 		     (name-hash font-name-hash))
 	font
@@ -144,12 +152,23 @@ Aside from setting slots in the FONT object, the FONT is returned as a value."))
 	  glyph
 	(assert (characterp char))
 	(assert (stringp name))
-	(when (and error-p
-		   (or (gethash char glyph-hash)
-		       (gethash name name-hash)))
-	  (error "Glyph: ~A already is hashed for font: ~A"
-		 name
-		 (font-name font)))
-	(setf (gethash char glyph-hash) glyph
-	      (gethash name name-hash) glyph))))
-  (:documentation "A method of adding a glyph to a font."))
+	(let ((char-value (gethash char glyph-hash))
+	      (name-value (gethash name name-hash)))
+	  (when (or char-value name-value)
+	    (funcall (if error-p #'error #'warn)
+		     "Multiple glyphs for character '~C' with name '~A' encountered when loading font: '~A'"
+		     char
+		     name
+		     (font-name font)))
+	  (format *debug-io*
+		  "Adding glyph '~C' '~A' to font." char name)
+	  (typecase char-value
+	    (null (setf (gethash char glyph-hash) glyph))
+	    (atom (setf (gethash char glyph-hash) (list glyph char-value)))
+	    (list (push glyph (gethash char glyph-hash))))
+	  (typecase name-value
+	    (null (setf (gethash name name-hash) glyph))
+	    (atom (setf (gethash name name-hash) (list glyph name-value)))
+	    (list (push glyph (gethash name name-hash))))))))
+  (:documentation
+   "A method of adding a glyph to a font.  If ERROR-P is true, errors instead of warnings will be created if multiple glyphs are associated with a single character."))

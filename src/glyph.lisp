@@ -59,8 +59,6 @@
   "Returns true if THING is a glyph."
   (typep thing 'glyph environment))
 
-
-
 ;;;
 ;;; Code to read in SMuFL defined glyphnames.
 ;;;
@@ -86,3 +84,48 @@ glyph names in FILENAME."
 				    :alternates (getf glyph-def :alternates)
 				    :code-point (code-codepoint code))))))
   hash)
+
+(defgeneric copy-smufl-glyph-metadata (data glyph)
+  (:method ((data hash-table) (glyph glyph))
+    (with-accessors ((character glyph-character)
+		     (name glyph-name)
+		     (code glyph-code)
+		     (code-point glyph-code-point)
+		     (description glyph-description)
+		     (alternates glyph-alternates))
+	glyph
+      (unless (slot-boundp glyph 'code)
+	(setf code (char-code character)))
+      (unless (slot-boundp glyph 'code-point)
+	(setf code-point (code-codepoint code)))
+      (let ((smufl-glyph (gethash character (get-glyphnames data))))
+	;; First we need to make sure we have a matching glyph.
+	(if smufl-glyph
+	    ;; If we have a match, we can copy over the SMuFL assigned values.
+	    (with-accessors ((smufl-name glyph-name)
+			     (smufl-code glyph-code)
+			     (smufl-code-point glyph-code-point)
+			     (smufl-description glyph-description)
+			     (smufl-alternates glyph-alternates))
+		smufl-glyph
+	      (unless (slot-boundp glyph 'name)
+		(setf name smufl-name))
+	      (unless (string= name smufl-name)
+		(warn "Glyph name for character '~C' is '~A', which differs from the SMuFL definition '~A'.  Using the SMuFL name."
+		      character
+		      name
+		      smufl-name))
+	      (setf name smufl-name
+		    code smufl-code
+		    code-point smufl-code-point
+		    description smufl-description
+		    alternates smufl-alternates)
+	      (format *debug-io*
+		      "Added glyph '~C' named '~A' with description '~A'."
+		      character
+		      name
+		      description))
+	    (warn "Unable to associate '~C' with a known SMuFL glyph, moving on."
+		  character)))))
+  (:documentation
+   "A generic function to copy over some basic information from a SMuFL glyph definition to a newly created font glyph."))

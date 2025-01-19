@@ -30,6 +30,7 @@
 	   #:glyph-ligature-component-glyphs
 	   #:glyphp
 	   #:load-glyphs
+	   #:add-font-glyph
 	   #:+cloveleaf-glyphnames-filename+
 	   #:+cloveleaf-classes-filename+
 	   #:+cloveleaf-ranges-filename+
