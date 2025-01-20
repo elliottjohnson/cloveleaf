@@ -61,7 +61,11 @@
    (kerning-pairs :accessor ttf-font-kerning-pairs
 		  :documentation "A list of all the kerning pairs available.  A list of left and right glyphs with kerning offset."
 		  :initarg :kerning-pairs
-		  :type list))
+		  :type list)
+   (bounding-box :accessor ttf-font-bounding-box
+		 :documentation "Horizontal and vertical extremes for the ttf font."
+		 :initarg :bounding-box
+		 :type (simple-vector 4)))
   (:documentation "A class for all SMuFL fonts using True Type Font formats."))
 
 (defmethod cloveleaf::parse-font ((font ttf-font) &key clear &allow-other-keys)
@@ -81,7 +85,8 @@
 	  (ttf-font-postscript-name font) (postscript-name font-loader)
 	  (ttf-font-full-name font) (full-name font-loader)
 	  (ttf-font-subfamily-name font) (subfamily-name font-loader)
-	  (ttf-font-kerning-pairs font) (all-kerning-pairs font-loader))))
+	  (ttf-font-kerning-pairs font) (all-kerning-pairs font-loader)
+	  (ttf-font-bounding-box font) (bounding-box font-loader))))
 
 (defclass ttf-glyph (glyph)
   ((glyph :accessor ttf-glyph-glyph
@@ -95,11 +100,13 @@
 		     (font-pathname font)
 		     :collection-index (ttf-font-collection-index font))
     (loop for i from 0 to (1- (glyph-count font-loader))
-	  for zpb-glyph = (index-glyph i font-loader)
-	  for zpb-code = (code-point zpb-glyph)
-	  do (add-font-glyph font
-			     data
-			     (make-instance 'ttf-glyph
-					    :glyph zpb-glyph
-					    :name (postscript-name zpb-glyph)
-					    :character (code-char zpb-code))))))
+	  do (let ((zpb-glyph (index-glyph i font-loader)))
+	       (bounding-box zpb-glyph)
+	       (contours zpb-glyph)
+	       (add-font-glyph font
+			       data
+			       (make-instance 'ttf-glyph
+					      :glyph zpb-glyph
+					      :name (postscript-name zpb-glyph)
+					      :character (code-char
+							  (code-point zpb-glyph))))))))

@@ -111,7 +111,7 @@ glyph names in FILENAME."
 	      (unless (slot-boundp glyph 'name)
 		(setf name smufl-name))
 	      (unless (string= name smufl-name)
-		(warn "Glyph name for character '~C' is '~A', which differs from the SMuFL definition '~A'.  Using the SMuFL name."
+		(warn "The glyph name for character '~C' is '~A', which differs from the SMuFL definition '~A'.  Using the SMuFL name."
 		      character
 		      name
 		      smufl-name))
@@ -121,11 +121,11 @@ glyph names in FILENAME."
 		    description smufl-description
 		    alternates smufl-alternates)
 	      (format *debug-io*
-		      "Added glyph '~C' named '~A' with description '~A'."
+		      "~&Added glyph '~C' named '~A' with description '~A'."
 		      character
 		      name
 		      description))
-	    (warn "Unable to associate '~C' with a known SMuFL glyph, moving on."
+	    (warn "Unable to associate '~C' with a SMuFL defined glyph, moving on."
 		  character)))))
   (:documentation
    "A generic function to copy over some basic information from a SMuFL glyph definition to a newly created font glyph."))

@@ -97,9 +97,10 @@ slots, which maybe required to locate the font definition."))
       (read-smufl-data :hash metadata) ; pass in more keys here?
       (parse-font font :data metadata)
       (load-glyphs font :data metadata)
+      (assign-alternate-glyphs font metadata)
+      
       ;; The following functions are works in progress.
-      ;(assign-alternate-glyphs font metadata)
-      ;(assign-ligature-glyphs font metadata)
+	;(assign-ligature-glyphs font metadata)
       ;(assign-optional-glyphs font metadata)
       ;(assign-glyph-sets font metadata)
       ;(set-glyph-advanced-widths font metadata)
@@ -172,3 +173,27 @@ Aside from setting slots in the FONT object, the FONT is returned as a value."))
 	    (list (push glyph (gethash name name-hash))))))))
   (:documentation
    "A method of adding a glyph to a font.  If ERROR-P is true, errors instead of warnings will be created if multiple glyphs are associated with a single character."))
+
+(defgeneric assign-alternate-glyphs (font data)
+  (:method ((font font) (data hash-table))
+    (with-accessors ((glyph-hash font-glyph-hash)
+		     (name-hash font-name-hash))
+	font
+      (loop for name being the hash-keys in name-hash
+	    using (hash-value glyphs)
+	    do (flet ((alts-to-glyph (glyph)
+			(with-accessors ((alts glyph-alternates))
+			    glyph
+			  (when alts
+			    (setf alts
+				  (mapcar #'(lambda (c)
+					      (etypecase c
+						(glyph c)
+						(character (gethash c glyph-hash))))
+					  alts))))))
+		 (etypecase glyphs
+		   (null)
+		   (glyph (alts-to-glyph glyphs))
+		   (list (loop for g in glyphs do (alts-to-glyph g))))))))
+  (:documentation
+   "Loops over all glyphs in a font and maps the alternate characters to their associated glyph objects."))
