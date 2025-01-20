@@ -50,9 +50,9 @@
   (:documentation "A class to represent the SMuFL spec's defined glyphs."))
 
 (defclass ligature-glyph (glyph)
-  ((component-glyphs :accessor glyph-ligature-component-glyths
+  ((component-glyphs :accessor ligature-glyph-component-glyphs
 		     :documentation "A list of glyphs that make up a ligature for this graph."
-		     :initarg :ligature))
+		     :initarg :component-glyphs))
   (:documentation "A class for all ligature glyphs."))
 
 (defun glyphp (thing &optional environment)

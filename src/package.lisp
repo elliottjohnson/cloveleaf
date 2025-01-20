@@ -37,6 +37,7 @@
 	   #:*cloveleaf-source-directory-pathname*
 	   #:read-glyphnames
 	   #:code-codepoint
+	   #:codepoint-code
 	   #:classes
 	   #:classes-name
 	   #:classes-glyphs

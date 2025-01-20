@@ -176,11 +176,6 @@
 			     key
 			     value))))))
 
-(defun codepoint-code (code-point)
-  "Converts hexidecimal string codepoints into integers."
-  (assert (stringp code-point))
-  (parse-integer (string-left-trim "U+" code-point) :radix 16))
-
 ;;;
 ;;; SMuFL classes.json
 ;;;

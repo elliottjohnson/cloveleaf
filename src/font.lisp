@@ -98,9 +98,9 @@ slots, which maybe required to locate the font definition."))
       (parse-font font :data metadata)
       (load-glyphs font :data metadata)
       (assign-alternate-glyphs font metadata)
+      (assign-ligature-glyphs font metadata)
       
       ;; The following functions are works in progress.
-	;(assign-ligature-glyphs font metadata)
       ;(assign-optional-glyphs font metadata)
       ;(assign-glyph-sets font metadata)
       ;(set-glyph-advanced-widths font metadata)
@@ -186,14 +186,43 @@ Aside from setting slots in the FONT object, the FONT is returned as a value."))
 			    glyph
 			  (when alts
 			    (setf alts
-				  (mapcar #'(lambda (c)
-					      (etypecase c
-						(glyph c)
-						(character (gethash c glyph-hash))))
-					  alts))))))
+				  (mapcar #'(lambda (g) (get-glyph font g)) alts))))))
 		 (etypecase glyphs
 		   (null)
 		   (glyph (alts-to-glyph glyphs))
 		   (list (loop for g in glyphs do (alts-to-glyph g))))))))
   (:documentation
    "Loops over all glyphs in a font and maps the alternate characters to their associated glyph objects."))
+
+(defgeneric assign-ligature-glyphs (font metadata)
+  (:method ((font metadata-font) (data hash-table))
+    (let ((ligatures (gethash "ligatures" data)))
+      (loop for ligature-name being the hash-keys in ligatures
+	    using (hash-value glyph-data)
+	    do (let ((glyph (make-instance 'ligature-glyph
+					   :name ligature-name
+					   :description (gethash "description" glyph-data))))
+		 (with-accessors ((code glyph-code)
+				  (code-point glyph-code-point)
+				  (character glyph-character)
+				  (component-glyphs ligature-glyph-component-glyphs))
+		     glyph
+		   (setf code-point (gethash "codepoint" glyph-data)
+		         code (codepoint-code code-point)
+			 character (code-char code)
+			 component-glyphs (get-glyph font (gethash "componentGlyphs" glyph-data))))
+		 (add-font-glyph font data glyph))))))
+
+(defgeneric get-glyph (font glyph-descriptor)
+  (:method ((font font) (glyph-descriptor glyph))
+    (declare (ignore font))
+    glyph-descriptor)
+  (:method ((font font) (glyph-descriptor string))
+    (egethash glyph-descriptor (font-name-hash font)))
+  (:method ((font font) (glyph-descriptor character))
+    (egethash glyph-descriptor (font-glyph-hash font)))
+  (:method ((font font) (glyph-descriptor list))
+    (mapcar #'(lambda (g) (get-glyph font g)) glyph-descriptor))
+  (:method ((font font) (glyph-descriptor array))
+    (loop for g across glyph-descriptor collect (get-glyph font g)))
+  (:documentation "GET-GLYPH attempts to return a glyph using some sane lookups or errors otherwise."))
