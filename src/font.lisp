@@ -40,7 +40,8 @@
 	       :type cons)
    (classes :accessor font-classes
 	    :documentation "Classes are named groups of associated glyphs."
-	    :initarg :classes)
+	    :initarg :classes
+	    :initform (make-hash-table :test #'equal))
    (ranges :accessor font-ranges
 	   :documentation "Ranges are groups of assocated glyphs by contiguous code point blocks."
 	   :initarg :ranges)
@@ -78,7 +79,8 @@
       (when total (font-slot-makunbound 'pathname))
       ;; Setup the font to be used again
       (setf (font-glyph-hash font) (make-hash-table :test #'eq)
-	    (font-name-hash font) (make-hash-table :test #'equal))))
+	    (font-name-hash font) (make-hash-table :test #'equal)
+	    (font-classes font) (make-hash-table :test #'equal))))
   (:method :around ((font metadata-font) &key total)
     (when total (slot-makunbound font 'metadata))
     (call-next-method))
@@ -94,14 +96,14 @@ slots, which maybe required to locate the font definition."))
     (declare (ignore clear))
     (assert (pathnamep (font-metadata font)))
     (let ((metadata (parse (font-metadata font))))
-      (read-smufl-data :hash metadata) ; pass in more keys here?
+      (read-smufl-data :hash metadata) ; pass keys for SMuFL files or use defaults?
       (parse-font font :data metadata)
       (load-glyphs font :data metadata)
       (assign-alternate-glyphs font metadata)
       (assign-ligature-glyphs font metadata)
+      (assign-optional-glyphs font metadata)
       
       ;; The following functions are works in progress.
-      ;(assign-optional-glyphs font metadata)
       ;(assign-glyph-sets font metadata)
       ;(set-glyph-advanced-widths font metadata)
       ;(set-glyph-anchors font metadata)
@@ -196,22 +198,26 @@ Aside from setting slots in the FONT object, the FONT is returned as a value."))
 
 (defgeneric assign-ligature-glyphs (font metadata)
   (:method ((font metadata-font) (data hash-table))
-    (let ((ligatures (gethash "ligatures" data)))
-      (loop for ligature-name being the hash-keys in ligatures
+    (loop for ligature-name being the hash-keys in (gethash "ligatures" data)
 	    using (hash-value glyph-data)
-	    do (let ((glyph (make-instance 'ligature-glyph
-					   :name ligature-name
-					   :description (gethash "description" glyph-data))))
-		 (with-accessors ((code glyph-code)
-				  (code-point glyph-code-point)
-				  (character glyph-character)
-				  (component-glyphs ligature-glyph-component-glyphs))
-		     glyph
-		   (setf code-point (gethash "codepoint" glyph-data)
-		         code (codepoint-code code-point)
-			 character (code-char code)
-			 component-glyphs (get-glyph font (gethash "componentGlyphs" glyph-data))))
-		 (add-font-glyph font data glyph))))))
+	  do (let ((glyph (make-instance 'ligature-glyph
+					 :name ligature-name
+					 :description (gethash "description"
+							       glyph-data))))
+	       (with-accessors ((code glyph-code)
+				(code-point glyph-code-point)
+				(character glyph-character)
+				(component-glyphs ligature-glyph-component-glyphs))
+		   glyph
+		 (setf code-point (gethash "codepoint" glyph-data)
+		       code (codepoint-code code-point)
+		       character (code-char code)
+		       component-glyphs (get-glyph font
+						   (gethash "componentGlyphs"
+							    glyph-data))))
+	       (add-font-glyph font data glyph))))
+  (:documentation
+   "Locates the ligatures defined by a font, adds new LIGATURE-GLYPHS made up of the defined COMPONENT-GLYPHS."))
 
 (defgeneric get-glyph (font glyph-descriptor)
   (:method ((font font) (glyph-descriptor glyph))
@@ -221,8 +227,56 @@ Aside from setting slots in the FONT object, the FONT is returned as a value."))
     (egethash glyph-descriptor (font-name-hash font)))
   (:method ((font font) (glyph-descriptor character))
     (egethash glyph-descriptor (font-glyph-hash font)))
+  (:method ((font font) (glyph-descriptor integer))
+    (get-glyph font (code-char glyph-descriptor)))
   (:method ((font font) (glyph-descriptor list))
     (mapcar #'(lambda (g) (get-glyph font g)) glyph-descriptor))
   (:method ((font font) (glyph-descriptor array))
     (loop for g across glyph-descriptor collect (get-glyph font g)))
   (:documentation "GET-GLYPH attempts to return a glyph using some sane lookups or errors otherwise."))
+
+(defgeneric assign-optional-glyphs (font data)
+  (:method ((font metadata-font) (data hash-table))
+    (with-accessors ((classes font-classes)
+		     (name-hash font-name-hash))
+	font
+      (loop for glyph-name being the hash-keys in (gethash "optionalGlyphs" data)
+	      using (hash-value glyph-data)
+	    do (let ((glyph
+		       (get-glyph font
+				  (codepoint-code (gethash "codepoint" glyph-data)))))
+		 (flet ((update-glyph-name (g)
+			  (with-accessors ((name glyph-name)
+					   (description glyph-description))
+			      g
+			    (warn "Updating glyph named '~A' to alternate name '~A'"
+				  name
+				  glyph-name)
+			    ;; TODO revisit remhash of the old name.
+			    ;; for now we just change the glyph-name & hash a new one.
+			    (setf name glyph-name
+				  (gethash name name-hash) glyph)
+			    (let ((alt-description (gethash "description" glyph-data)))
+			      (when alt-description
+				(setf description alt-description))))))
+		   (typecase glyph
+		     (glyph (update-glyph-name glyph))
+		     (list (mapcar #'update-glyph-name glyph))
+		     (t (error "Failed to find a optional glyph definition for ~A with codepoint: ~A"
+			       glyph-name
+			       (gethash "codepoint" glyph-data)))))
+		 
+
+		 ;; Stash a list of glyphs in the font-classes table.
+		 ;;  later we'll go over this table and instantiate applicable classes.
+		 (macrolet ((glyph-classes () '(gethash "classes" glyph-data)))
+		   (when (glyph-classes)
+		     (loop for class across (glyph-classes)
+			   do (pushnew glyph (gethash class classes)))))))))
+  (:documentation
+   "Optional Glyphs are ones outside of the typical SMuFL defined glyphs and are defined on a per font basis.  This function also stashes information about class membership for these optional glyphs."))
+
+(defgeneric assign-glyph-sets (font metadata)
+  (:method ((font metadata-font) (data hash-table))
+    (loop for set-name being the hash-keys in (gethash "sets" data)
+	  using (hash-value set-data))))
