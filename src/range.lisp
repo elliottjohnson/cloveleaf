@@ -54,3 +54,12 @@ ranges in FILENAME."
 							(gethash g glyph-table))
 						    (getf ranges-def :glyphs)))))))
   hash)
+
+(defmethod print-object ((object ranges) stream)
+  (when (and (slot-boundp object 'name)
+	     (slot-boundp object 'description))
+    (print-unreadable-object (object stream :type t :identity t)
+      (format stream
+	      "~A: ~A"
+	      (ranges-name object)
+	      (ranges-description object)))))

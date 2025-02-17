@@ -44,7 +44,9 @@
 	    :initform (make-hash-table :test #'equal))
    (ranges :accessor font-ranges
 	   :documentation "Ranges are groups of assocated glyphs by contiguous code point blocks."
-	   :initarg :ranges)
+	   :initarg :ranges
+	   :type list
+	   :initform ())
    (sets :accessor font-sets
 	 :documentation "Sets are groups of alternate glyphs for specialty rendering."
 	 :initarg :sets))
@@ -80,7 +82,8 @@
       ;; Setup the font to be used again
       (setf (font-glyph-hash font) (make-hash-table :test #'eq)
 	    (font-name-hash font) (make-hash-table :test #'equal)
-	    (font-classes font) (make-hash-table :test #'equal))))
+	    (font-classes font) (make-hash-table :test #'equal)
+	    (font-ranges font) ())))
   (:method :around ((font metadata-font) &key total)
     (when total (slot-makunbound font 'metadata))
     (call-next-method))
@@ -107,11 +110,9 @@ slots, which maybe required to locate the font definition."))
       (set-glyph-anchors font metadata)
       (set-alternates font metadata)
       (set-bounding-boxes font metadata)
-      
-      ;; The following functions are works in progress.
-      ;(associate-classes font metadata)
-      ;(associate-ranges font metadata)
-      ))
+      (associate-classes font metadata)
+      (associate-ranges font metadata)
+      font))
   (:documentation
    "A generic function for loading fonts and the various tasks associated."))  
 
@@ -410,3 +411,22 @@ Might be low hanging fruit to optimize."))
 			    glyph-name)))))))
   (:documentation
    "Reads the bounding box metadata and associates it with the font glyphs."))
+
+(defgeneric associate-classes (font data)
+  (:method (font data)
+    (declare (ignore font data))
+    t)
+  (:documentation
+   "Initially I spec'd out this function to handle the association of classes
+with glyphs, but currently the optionalGlyphs hold this association, so
+we capture it there.  I've left this method just in case there is some
+future need to do the association independently of the optional glyphs."))
+
+(defgeneric associate-ranges (font data)
+  (:method ((font metadata-font) (data hash-table))
+    (let ((ranges (get-ranges data)))
+      (if (and ranges (hash-table-p ranges))
+	  (loop for range being the hash-value in ranges
+		do (pushnew range (font-ranges font)))
+	  (warn "No ranges specified for font: ~A" (font-name font)))))
+  (:documentation "Associates the SMuFL defined ranges with the font."))
