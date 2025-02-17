@@ -106,9 +106,9 @@ slots, which maybe required to locate the font definition."))
       (set-glyph-advanced-widths font metadata)
       (set-glyph-anchors font metadata)
       (set-alternates font metadata)
+      (set-bounding-boxes font metadata)
       
       ;; The following functions are works in progress.
-      ;(set-bounding-boxes font metadata)
       ;(associate-classes font metadata)
       ;(associate-ranges font metadata)
       ))
@@ -384,3 +384,29 @@ Might be low hanging fruit to optimize."))
 	  (warn "No alternates for font: ~A" (font-name font)))))
   (:documentation "Loops over the definitions of alternate glyphs and associates them."))
 
+(defgeneric set-bounding-boxes (font data)
+  (:method ((font metadata-font) (data hash-table))
+    (let ((bboxes (gethash "glyphBBoxes" data)))
+      (loop for glyph-name being the hash-keys in bboxes
+	      using (hash-value bbox-data)
+	    for glyph = (get-glyph font glyph-name)
+	    do (labels ((get-coord (key) ; code reuse here! factor me out.
+			  (let ((coord (gethash key bbox-data)))
+			    (when coord
+			      (list (aref coord 0) (aref coord 1)))))
+			(set-box (g)
+			  (when (and (slot-boundp g 'bounding-boxes)
+				     (glyph-bounding-boxes g))
+			    (warn "Overwritting bounding box for: ~A" glyph-name))
+			  (setf (glyph-bounding-boxes g)
+				(make-position-alist :se (get-coord "bBoxSE")
+						     :sw (get-coord "bBoxSW")
+						     :ne (get-coord "bBoxNE")
+						     :nw (get-coord "bBoxNW")))))
+		 (typecase glyph
+		   (list (loop for g in glyph do (set-box g)))
+		   (glyph (set-box glyph))
+		   (t (warn "Cannot locate glyph: ~A to set defined bounding box."
+			    glyph-name)))))))
+  (:documentation
+   "Reads the bounding box metadata and associates it with the font glyphs."))
