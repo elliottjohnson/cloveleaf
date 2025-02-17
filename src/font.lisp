@@ -103,9 +103,9 @@ slots, which maybe required to locate the font definition."))
       (assign-ligature-glyphs font metadata)
       (assign-optional-glyphs font metadata)
       (assign-glyph-sets font metadata)
+      (set-glyph-advanced-widths font metadata)
       
       ;; The following functions are works in progress.
-      ;(set-glyph-advanced-widths font metadata)
       ;(set-glyph-anchors font metadata)
       ;(set-alternates font metadata)
       ;(set-bounding-boxes font metadata)
@@ -283,4 +283,25 @@ Aside from setting slots in the FONT object, the FONT is returned as a value."))
     (loop for set-name being the hash-keys in (gethash "sets" data)
 	    using (hash-value set-data)
 	  do (pushnew (make-set font data set-name set-data)
-		      (font-sets font)))))
+		      (font-sets font))))
+  (:documentation
+   "ASSIGN-GLYPH-SETS loops over the font metadata \"sets\" and updates the widths."))
+
+
+(defgeneric set-glyph-advanced-widths (font metadata)
+  (:method ((font metadata-font) (data hash-table))
+    (let ((widths (gethash "glyphAdvanceWidths" data)))
+      (if (hash-table-p widths)
+	  (loop for glyph-name being the hash-keys in widths
+		  using (hash-value width)
+		for glyph = (get-glyph font glyph-name)
+		do (flet ((set-aw (g w) (setf (glyph-advanced-width g) w)))
+		     (typecase glyph
+		       (list (loop for g in glyph do (set-aw g width)))
+		       (glyph (set-aw glyph width))
+		       (t (warn "Cannot locate a glyph for: '~A'" glyph-name)))))
+	  (warn "No advanced glyph widths are found for font: ~A" (font-name font)))))
+  (:documentation
+   "Iterates over the font's advanced width declarations and sets the related 
+glyph's slot values.  Currently these are being read as double-floats.  
+Might be low hanging fruit to optimize."))
