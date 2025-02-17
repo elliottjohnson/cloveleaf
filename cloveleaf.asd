@@ -9,6 +9,7 @@
 		 (:file "definitions")
 		 (:file "utilities")
 		 (:file "glyph")
+		 (:file "anchors")
 		 (:file "font")
 		 (:file "class")
 		 (:file "range")

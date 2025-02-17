@@ -40,10 +40,10 @@
 		   :documentation "Defines a glyph width from the origin of the glyph in the next glyph."
 		   :initarg :advanced-with
 		   :type number)
-   (anchors :accessor glyph-anchors
-	    :documentation "A list of up to 22 attributes wand values forthe given glyph."
-	    :initarg :glyph-anchors
-	    :type list)
+   (anchor :accessor glyph-anchor
+	   :documentation "A list of up to 22 attributes wand values forthe given glyph."
+	   :initarg :glyph-anchor
+	   :type list)
    (bounding-boxes :accessor glyph-bounding-boxes
 		   :documentation "Defines the bounding box of the glyph or smallest rectaingle test encloses very part of the path."
 		   :initarg :bounding-boxes))
