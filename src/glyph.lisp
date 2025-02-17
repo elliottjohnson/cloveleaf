@@ -59,6 +59,10 @@
   "Returns true if THING is a glyph."
   (typep thing 'glyph environment))
 
+(defmethod print-object ((object glyph) stream)
+  (print-unreadable-object (object stream :type t :identity t)
+    (format stream "~A ~A" (glyph-code-point object) (glyph-name object))))
+
 ;;;
 ;;; Code to read in SMuFL defined glyphnames.
 ;;;
@@ -129,3 +133,4 @@ glyph names in FILENAME."
 		  character)))))
   (:documentation
    "A generic function to copy over some basic information from a SMuFL glyph definition to a newly created font glyph."))
+

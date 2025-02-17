@@ -47,4 +47,5 @@
 	   #:ranges-end
 	   #:ranges-start
 	   #:ranges-glyphs
-	   #:read-smufl-data))
+	   #:read-smufl-data)
+  (:shadow "SET"))
