@@ -192,7 +192,7 @@ Aside from setting slots in the FONT object, the FONT is returned as a value."))
 				  (mapcar #'(lambda (g) (get-glyph font g)) alts))))))
 		 (etypecase glyphs
 		   (null)
-		   (glyph (alts-to-glyph glyphs))
+	       	   (glyph (alts-to-glyph glyphs))
 		   (list (loop for g in glyphs do (alts-to-glyph g))))))))
   (:documentation
    "Loops over all glyphs in a font and maps the alternate characters to their associated glyph objects."))
@@ -227,14 +227,18 @@ Aside from setting slots in the FONT object, the FONT is returned as a value."))
   (:method ((font font) (glyph-descriptor string))
     (egethash glyph-descriptor (font-name-hash font)))
   (:method ((font font) (glyph-descriptor character))
-    (egethash glyph-descriptor (font-glyph-hash font)))
+    (let ((glyph (gethash glyph-descriptor (font-glyph-hash font))))
+      (if glyph ; Bravura plays nice here, but Leland does not.  Needs to be more robust.
+	  glyph ; If we find an associated SMuFL glyph, we return it... otherwise
+	  glyph-descriptor))) ; the character is outside of SMuFL, so just use it? ..hmm.
   (:method ((font font) (glyph-descriptor integer))
     (get-glyph font (code-char glyph-descriptor)))
   (:method ((font font) (glyph-descriptor list))
     (mapcar #'(lambda (g) (get-glyph font g)) glyph-descriptor))
   (:method ((font font) (glyph-descriptor array))
     (loop for g across glyph-descriptor collect (get-glyph font g)))
-  (:documentation "GET-GLYPH attempts to return a glyph using some sane lookups or errors otherwise."))
+  (:documentation
+   "GET-GLYPH attempts to return a glyph or list of glyphs using some sane lookups or errors otherwise."))
 
 (defgeneric assign-optional-glyphs (font data)
   (:method ((font metadata-font) (data hash-table))
@@ -266,8 +270,6 @@ Aside from setting slots in the FONT object, the FONT is returned as a value."))
 		     (t (error "Failed to find a optional glyph definition for ~A with codepoint: ~A"
 			       glyph-name
 			       (gethash "codepoint" glyph-data)))))
-		 
-
 		 ;; Stash a list of glyphs in the font-classes table.
 		 ;;  later we'll go over this table and instantiate applicable classes.
 		 (macrolet ((glyph-classes () '(gethash "classes" glyph-data)))
@@ -281,10 +283,12 @@ Aside from setting slots in the FONT object, the FONT is returned as a value."))
   (:method ((font metadata-font) (data hash-table))
     (unless (slot-boundp font 'sets)
       (setf (font-sets font) nil))
-    (loop for set-name being the hash-keys in (gethash "sets" data)
-	    using (hash-value set-data)
-	  do (pushnew (make-set font data set-name set-data)
-		      (font-sets font))))
+    (let ((sets (gethash "sets" data)))
+      (when sets
+	(loop for set-name being the hash-keys in sets 
+		using (hash-value set-data)
+	      do (pushnew (make-set font data set-name set-data)
+			  (font-sets font))))))
   (:documentation
    "ASSIGN-GLYPH-SETS loops over the font metadata \"sets\" and updates the widths."))
 

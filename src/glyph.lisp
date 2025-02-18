@@ -23,11 +23,13 @@
 	      :initarg :character
 	      :type character)
    (description :accessor glyph-description
-		:documentation "A string descriptions of the character."
+		:documentation "A string descriptions of this glyph."
 		:initarg :description
 		:type string)
    (alternates :accessor glyph-alternates
-	       :documentation "A list of alternates for this character."
+	       :documentation
+	       "A list of alternates for this glyph.  The list objects can be of
+type GLYPH or CHARACTER if the GLYPH is not defined."
 	       :initarg :alternates
 	       :initform ()
 	       :type list)
@@ -41,7 +43,7 @@
 		   :initarg :advanced-with
 		   :type number)
    (anchor :accessor glyph-anchor
-	   :documentation "A list of up to 22 attributes wand values forthe given glyph."
+	   :documentation "A list of up to 22 attributes and values for the given glyph."
 	   :initarg :glyph-anchor
 	   :type list)
    (bounding-boxes :accessor glyph-bounding-boxes
