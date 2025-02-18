@@ -92,7 +92,8 @@ The font can be instantiated by the following command:
 ```(in-package :cloveleaf)
 (defvar *font* (make-instance 'cloveleaf/ttf:ttf-font
                               :pathname #p"/path/to/font.ttf"
-			      :metadata #p"/path/to/font_metadata.json"))```
+			      :metadata #p"/path/to/font_metadata.json"))
+```
 
 Now that the font object exists, it can be loaded:
 
