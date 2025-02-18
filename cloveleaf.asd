@@ -1,5 +1,5 @@
 (defsystem "cloveleaf"
-  :version "0.0.1"
+  :version "0.1.0"
   :author "Elliott Johnson <elliott@elliottjohnson.net>"
   :license "MIT"
   :depends-on ("com.inuoe.jzon")
@@ -19,7 +19,7 @@
   :in-order-to ((test-op (test-op "cloveleaf/tests"))))
 
 (defsystem "cloveleaf/ttf"
-  :version "0.0.1"
+  :version "0.1.0"
   :author "Elliott Johnson <elliott@elliottjohnson.net>"
   :license "MIT"
   :depends-on ("cloveleaf" "zpb-ttf")
@@ -41,6 +41,7 @@
 (defsystem "cloveleaf/smufl"
   :author "Elliott Johnson"
   :license "MIT"
+  :version "1.4"
   :depends-on ("com.inuoe.jzon" "cloveleaf")
   :components ((:module "build"
 		:components ((:file "generate"))))
