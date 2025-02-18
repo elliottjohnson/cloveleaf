@@ -158,7 +158,7 @@ metadata.
 
 ### Glyphs
 
-```GLYPH`` class is the parent of all glyphs and contains all of the metadata
+```GLYPH``` class is the parent of all glyphs and contains all of the metadata
 about the particular glyph, including the unicode, font glyphs, registration,
 alternates, etc.
 
